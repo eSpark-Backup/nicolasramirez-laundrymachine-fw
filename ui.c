@@ -27,7 +27,42 @@ lv_obj_t * ui_settingsImg;
 lv_obj_t * ui_settingsImg1;
 lv_obj_t * ui_homeMainLbl;
 lv_obj_t * ui_homeDescLbl;
-lv_obj_t * ui_homeDescLbl1;
+lv_obj_t * ui_homeBtmDescLbl;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_WashScreen
+void ui_WashScreen_screen_init(void);
+lv_obj_t * ui_WashScreen;
+void ui_event_NormalWashPanel(lv_event_t * e);
+lv_obj_t * ui_NormalWashPanel;
+lv_obj_t * ui_normalLbl;
+lv_obj_t * ui_normalBtmLbl;
+lv_obj_t * ui_normalTimeLbl;
+void ui_event_IntenseWashPanel(lv_event_t * e);
+lv_obj_t * ui_IntenseWashPanel;
+lv_obj_t * ui_intenseLbl;
+lv_obj_t * ui_intenseBtmLbl;
+lv_obj_t * ui_intenseTimeLbl;
+void ui_event_DelicateWashPanel(lv_event_t * e);
+lv_obj_t * ui_DelicateWashPanel;
+lv_obj_t * ui_delicateLbl;
+lv_obj_t * ui_delicateBtmLbl;
+lv_obj_t * ui_delicateTimeLbl;
+lv_obj_t * ui_justWashTopCntr;
+lv_obj_t * ui_eevaJWLogoImg;
+lv_obj_t * ui_backJWImg;
+lv_obj_t * ui_backLbl;
+lv_obj_t * ui_infoJWImg;
+lv_obj_t * ui_customizeJustWashLbl;
+lv_obj_t * ui_WashSettingsLbl;
+lv_obj_t * ui_JWBtmDescLbl;
+lv_obj_t * ui_JustWashStartBtn;
+lv_obj_t * ui_startLbl;
+lv_obj_t * ui_TimeCntr;
+lv_obj_t * ui_totCycTimeLbl;
+lv_obj_t * ui_cycleMinLbl;
+lv_obj_t * ui_cycleTimeLbl;
+lv_obj_t * ui_Image6;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -46,6 +81,38 @@ lv_obj_t * ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_NormalWashPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_normalLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_normalBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
+
+void ui_event_IntenseWashPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_intenseBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_intenseLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
+
+void ui_event_DelicateWashPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_DelicateWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_delicateLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_delicateBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
 
 ///////////////////// SCREENS ////////////////////
 
@@ -56,6 +123,7 @@ void ui_init(void)
                                                false, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
     ui_HomeScreen_screen_init();
+    ui_WashScreen_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_HomeScreen);
 }

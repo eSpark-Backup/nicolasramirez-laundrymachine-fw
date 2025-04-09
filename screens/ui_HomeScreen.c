@@ -184,15 +184,15 @@ void ui_HomeScreen_screen_init(void)
     lv_obj_set_style_text_line_space(ui_homeDescLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_homeDescLbl, &lv_font_montserrat_10, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_homeDescLbl1 = lv_label_create(ui_HomeScreen);
-    lv_obj_set_width(ui_homeDescLbl1, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_homeDescLbl1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_homeDescLbl1, 0);
-    lv_obj_set_y(ui_homeDescLbl1, 221);
-    lv_obj_set_align(ui_homeDescLbl1, LV_ALIGN_CENTER);
-    lv_label_set_text(ui_homeDescLbl1, "Customer Support. eevasupport@eeva.com");
-    lv_obj_set_style_text_color(ui_homeDescLbl1, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_opa(ui_homeDescLbl1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_homeDescLbl1, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_homeBtmDescLbl = lv_label_create(ui_HomeScreen);
+    lv_obj_set_width(ui_homeBtmDescLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_homeBtmDescLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_homeBtmDescLbl, 0);
+    lv_obj_set_y(ui_homeBtmDescLbl, 221);
+    lv_obj_set_align(ui_homeBtmDescLbl, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_homeBtmDescLbl, "Customer Support. eevasupport@eeva.com");
+    lv_obj_set_style_text_color(ui_homeBtmDescLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_homeBtmDescLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_homeBtmDescLbl, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
 
 }

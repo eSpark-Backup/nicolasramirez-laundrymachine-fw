@@ -1,4 +1,5 @@
 SET(SOURCES screens/ui_HomeScreen.c
+    screens/ui_WashScreen.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c
@@ -8,6 +9,8 @@ SET(SOURCES screens/ui_HomeScreen.c
     images/ui_img_turbineicon_png.c
     images/ui_img_eevalogo_png.c
     images/ui_img_settingsicon_png.c
-    images/ui_img_infoicon_png.c)
+    images/ui_img_infoicon_png.c
+    images/ui_img_backicon_png.c
+    images/ui_img_clockicon_png.c)
 
 add_library(ui ${SOURCES})
