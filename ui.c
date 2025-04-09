@@ -89,6 +89,26 @@ lv_obj_t * ui_timeRemainLbl;
 lv_obj_t * ui_timerImg;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_LastSuccessScreen
+void ui_LastSuccessScreen_screen_init(void);
+lv_obj_t * ui_LastSuccessScreen;
+lv_obj_t * ui_Image1;
+lv_obj_t * ui_successTopCntr;
+lv_obj_t * ui_eevaJSuccessLogoImg;
+lv_obj_t * ui_backSuccessImg;
+lv_obj_t * ui_HomePgLbl;
+lv_obj_t * ui_infoSuccessImg;
+void ui_event_lastScrPanel(lv_event_t * e);
+lv_obj_t * ui_lastScrPanel;
+lv_obj_t * ui_WaterSavedFrame;
+lv_obj_t * ui_CarbonHomentingFrame;
+lv_obj_t * ui_EnergySavedFrame;
+lv_obj_t * ui_SuccessBtmDescLbl;
+lv_obj_t * ui_SuccessEndLbl;
+lv_obj_t * ui_SuccessBtmLbl;
+lv_obj_t * ui_SuccessMainLbl;
+// CUSTOM VARIABLES
+
 // EVENTS
 lv_obj_t * ui____initial_actions0;
 
@@ -182,6 +202,15 @@ void ui_event_JustWashStartBtn(lv_event_t * e)
     }
 }
 
+void ui_event_lastScrPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_screen_change(&ui_HomeScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_HomeScreen_screen_init);
+    }
+}
+
 ///////////////////// SCREENS ////////////////////
 
 void ui_init(void)
@@ -193,6 +222,7 @@ void ui_init(void)
     ui_HomeScreen_screen_init();
     ui_WashScreen_screen_init();
     ui_TimerStartScreen_screen_init();
+    ui_LastSuccessScreen_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_HomeScreen);
 }

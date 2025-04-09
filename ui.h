@@ -97,6 +97,26 @@ extern lv_obj_t * ui_timeRemainLbl;
 extern lv_obj_t * ui_timerImg;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_LastSuccessScreen
+void ui_LastSuccessScreen_screen_init(void);
+extern lv_obj_t * ui_LastSuccessScreen;
+extern lv_obj_t * ui_Image1;
+extern lv_obj_t * ui_successTopCntr;
+extern lv_obj_t * ui_eevaJSuccessLogoImg;
+extern lv_obj_t * ui_backSuccessImg;
+extern lv_obj_t * ui_HomePgLbl;
+extern lv_obj_t * ui_infoSuccessImg;
+void ui_event_lastScrPanel(lv_event_t * e);
+extern lv_obj_t * ui_lastScrPanel;
+extern lv_obj_t * ui_WaterSavedFrame;
+extern lv_obj_t * ui_CarbonHomentingFrame;
+extern lv_obj_t * ui_EnergySavedFrame;
+extern lv_obj_t * ui_SuccessBtmDescLbl;
+extern lv_obj_t * ui_SuccessEndLbl;
+extern lv_obj_t * ui_SuccessBtmLbl;
+extern lv_obj_t * ui_SuccessMainLbl;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
@@ -112,6 +132,10 @@ LV_IMG_DECLARE(ui_img_infoicon_png);    // assets/infoIcon.png
 LV_IMG_DECLARE(ui_img_backicon_png);    // assets/backIcon.png
 LV_IMG_DECLARE(ui_img_clockicon_png);    // assets/clockIcon.png
 LV_IMG_DECLARE(ui_img_alarmclock_png);    // assets/AlarmClock.png
+LV_IMG_DECLARE(ui_img_last_screen_png);    // assets/Last Screen.png
+LV_IMG_DECLARE(ui_img_frame_12_png);    // assets/Frame 12.png
+LV_IMG_DECLARE(ui_img_frame_13_png);    // assets/Frame 13.png
+LV_IMG_DECLARE(ui_img_frame_14_png);    // assets/Frame 14.png
 
 // UI INIT
 void ui_init(void);
