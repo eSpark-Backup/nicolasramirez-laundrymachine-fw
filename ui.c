@@ -11,13 +11,16 @@
 // SCREEN: ui_HomeScreen
 void ui_HomeScreen_screen_init(void);
 lv_obj_t * ui_HomeScreen;
+void ui_event_homeWashPanel(lv_event_t * e);
 lv_obj_t * ui_homeWashPanel;
 lv_obj_t * ui_justWashImg;
 lv_obj_t * ui_justWashLbl;
+void ui_event_WashDryPanel(lv_event_t * e);
 lv_obj_t * ui_WashDryPanel;
 lv_obj_t * ui_smallWashImg;
 lv_obj_t * ui_smallDryImg;
 lv_obj_t * ui_washDryLbl;
+void ui_event_homeDryPanel(lv_event_t * e);
 lv_obj_t * ui_homeDryPanel;
 lv_obj_t * ui_justDryImg;
 lv_obj_t * ui_justDryLbl;
@@ -56,6 +59,7 @@ lv_obj_t * ui_infoJWImg;
 lv_obj_t * ui_customizeJustWashLbl;
 lv_obj_t * ui_WashSettingsLbl;
 lv_obj_t * ui_JWBtmDescLbl;
+void ui_event_JustWashStartBtn(lv_event_t * e);
 lv_obj_t * ui_JustWashStartBtn;
 lv_obj_t * ui_startLbl;
 lv_obj_t * ui_TimeCntr;
@@ -63,6 +67,26 @@ lv_obj_t * ui_totCycTimeLbl;
 lv_obj_t * ui_cycleMinLbl;
 lv_obj_t * ui_cycleTimeLbl;
 lv_obj_t * ui_Image6;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_TimerStartScreen
+void ui_TimerStartScreen_screen_init(void);
+lv_obj_t * ui_TimerStartScreen;
+lv_obj_t * ui_timeRemainTopCntr;
+lv_obj_t * ui_eevaTRLogoImg;
+lv_obj_t * ui_backTRImg;
+lv_obj_t * ui_infoTRImg;
+lv_obj_t * ui_mainTimeRemainLbl;
+lv_obj_t * ui_TimeRemainBtmLbl;
+lv_obj_t * ui_TRBtmDescLbl;
+lv_obj_t * ui_WashTimerPauseBtn;
+lv_obj_t * ui_pauseBtnLbl;
+lv_obj_t * ui_JustWashEndBtn;
+lv_obj_t * ui_endBtnLbl;
+lv_obj_t * ui_TimerScrCntr;
+lv_obj_t * ui_tmrMinLbl;
+lv_obj_t * ui_timeRemainLbl;
+lv_obj_t * ui_timerImg;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -81,6 +105,41 @@ lv_obj_t * ui____initial_actions0;
 ///////////////////// ANIMATIONS ////////////////////
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_homeWashPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_justWashLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_screen_change(&ui_WashScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_WashScreen_screen_init);
+    }
+}
+
+void ui_event_WashDryPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_WashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_smallWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_smallDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_washDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
+
+void ui_event_homeDryPanel(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
+
 void ui_event_NormalWashPanel(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
@@ -114,6 +173,15 @@ void ui_event_DelicateWashPanel(lv_event_t * e)
     }
 }
 
+void ui_event_JustWashStartBtn(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_TimerStartScreen_screen_init);
+    }
+}
+
 ///////////////////// SCREENS ////////////////////
 
 void ui_init(void)
@@ -124,6 +192,7 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
     ui_HomeScreen_screen_init();
     ui_WashScreen_screen_init();
+    ui_TimerStartScreen_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_HomeScreen);
 }

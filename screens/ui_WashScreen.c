@@ -333,5 +333,6 @@ void ui_WashScreen_screen_init(void)
     lv_obj_add_event_cb(ui_NormalWashPanel, ui_event_NormalWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_IntenseWashPanel, ui_event_IntenseWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DelicateWashPanel, ui_event_DelicateWashPanel, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_JustWashStartBtn, ui_event_JustWashStartBtn, LV_EVENT_ALL, NULL);
 
 }

@@ -19,13 +19,16 @@ extern "C" {
 // SCREEN: ui_HomeScreen
 void ui_HomeScreen_screen_init(void);
 extern lv_obj_t * ui_HomeScreen;
+void ui_event_homeWashPanel(lv_event_t * e);
 extern lv_obj_t * ui_homeWashPanel;
 extern lv_obj_t * ui_justWashImg;
 extern lv_obj_t * ui_justWashLbl;
+void ui_event_WashDryPanel(lv_event_t * e);
 extern lv_obj_t * ui_WashDryPanel;
 extern lv_obj_t * ui_smallWashImg;
 extern lv_obj_t * ui_smallDryImg;
 extern lv_obj_t * ui_washDryLbl;
+void ui_event_homeDryPanel(lv_event_t * e);
 extern lv_obj_t * ui_homeDryPanel;
 extern lv_obj_t * ui_justDryImg;
 extern lv_obj_t * ui_justDryLbl;
@@ -64,6 +67,7 @@ extern lv_obj_t * ui_infoJWImg;
 extern lv_obj_t * ui_customizeJustWashLbl;
 extern lv_obj_t * ui_WashSettingsLbl;
 extern lv_obj_t * ui_JWBtmDescLbl;
+void ui_event_JustWashStartBtn(lv_event_t * e);
 extern lv_obj_t * ui_JustWashStartBtn;
 extern lv_obj_t * ui_startLbl;
 extern lv_obj_t * ui_TimeCntr;
@@ -71,6 +75,26 @@ extern lv_obj_t * ui_totCycTimeLbl;
 extern lv_obj_t * ui_cycleMinLbl;
 extern lv_obj_t * ui_cycleTimeLbl;
 extern lv_obj_t * ui_Image6;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_TimerStartScreen
+void ui_TimerStartScreen_screen_init(void);
+extern lv_obj_t * ui_TimerStartScreen;
+extern lv_obj_t * ui_timeRemainTopCntr;
+extern lv_obj_t * ui_eevaTRLogoImg;
+extern lv_obj_t * ui_backTRImg;
+extern lv_obj_t * ui_infoTRImg;
+extern lv_obj_t * ui_mainTimeRemainLbl;
+extern lv_obj_t * ui_TimeRemainBtmLbl;
+extern lv_obj_t * ui_TRBtmDescLbl;
+extern lv_obj_t * ui_WashTimerPauseBtn;
+extern lv_obj_t * ui_pauseBtnLbl;
+extern lv_obj_t * ui_JustWashEndBtn;
+extern lv_obj_t * ui_endBtnLbl;
+extern lv_obj_t * ui_TimerScrCntr;
+extern lv_obj_t * ui_tmrMinLbl;
+extern lv_obj_t * ui_timeRemainLbl;
+extern lv_obj_t * ui_timerImg;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -87,6 +111,7 @@ LV_IMG_DECLARE(ui_img_settingsicon_png);    // assets/settingsIcon.png
 LV_IMG_DECLARE(ui_img_infoicon_png);    // assets/infoIcon.png
 LV_IMG_DECLARE(ui_img_backicon_png);    // assets/backIcon.png
 LV_IMG_DECLARE(ui_img_clockicon_png);    // assets/clockIcon.png
+LV_IMG_DECLARE(ui_img_alarmclock_png);    // assets/AlarmClock.png
 
 // UI INIT
 void ui_init(void);
