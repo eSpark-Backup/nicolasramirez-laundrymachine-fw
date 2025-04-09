@@ -3,6 +3,7 @@ SET(SOURCES screens/ui_HomeScreen.c
     screens/ui_TimerStartScreen.c
     screens/ui_LastSuccessScreen.c
     screens/ui_WashDryScreen.c
+    screens/ui_WashDryDetailScreen.c
     ui.c
     components/ui_comp_hook.c
     ui_helpers.c

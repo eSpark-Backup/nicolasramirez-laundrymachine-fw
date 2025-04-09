@@ -163,6 +163,43 @@ extern lv_obj_t * ui_delicateBtmLbl2;
 extern lv_obj_t * ui_delicateTimeLbl2;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_WashDryDetailScreen
+void ui_WashDryDetailScreen_screen_init(void);
+extern lv_obj_t * ui_WashDryDetailScreen;
+extern lv_obj_t * ui_WashSelPanel;
+extern lv_obj_t * ui_WashSelLbl;
+extern lv_obj_t * ui_WashSelBtmLbl;
+extern lv_obj_t * ui_WashSelTimeLbl;
+extern lv_obj_t * ui_WashSettingLbl;
+void ui_event_WashSelBtn(lv_event_t * e);
+extern lv_obj_t * ui_WashSelBtn;
+extern lv_obj_t * ui_WashSelBtnLbl;
+extern lv_obj_t * ui_DrySelPanel;
+extern lv_obj_t * ui_DrySelLbl;
+extern lv_obj_t * ui_DrySelBtmLbl;
+extern lv_obj_t * ui_DrySelTimeLbl;
+extern lv_obj_t * ui_DrySettingLbl;
+void ui_event_DrySelBtn(lv_event_t * e);
+extern lv_obj_t * ui_DrySelBtn;
+extern lv_obj_t * ui_WashSelBtnLbl1;
+extern lv_obj_t * ui_justWashTopCntr1;
+extern lv_obj_t * ui_eevaJWLogoImg1;
+extern lv_obj_t * ui_backJWImg1;
+extern lv_obj_t * ui_backLbl1;
+extern lv_obj_t * ui_infoJWImg1;
+extern lv_obj_t * ui_JWBtmDescLbl1;
+void ui_event_JustWashStartBtn1(lv_event_t * e);
+extern lv_obj_t * ui_JustWashStartBtn1;
+extern lv_obj_t * ui_startLbl1;
+extern lv_obj_t * ui_TimeCntr1;
+extern lv_obj_t * ui_totCycTimeLbl1;
+extern lv_obj_t * ui_cycleMinLbl1;
+extern lv_obj_t * ui_cycleTimeLbl1;
+extern lv_obj_t * ui_Image8;
+extern lv_obj_t * ui_mainTimeRemainLbl2;
+extern lv_obj_t * ui_TimeRemainBtmLbl2;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
