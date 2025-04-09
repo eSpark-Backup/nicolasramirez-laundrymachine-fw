@@ -117,6 +117,52 @@ extern lv_obj_t * ui_SuccessBtmLbl;
 extern lv_obj_t * ui_SuccessMainLbl;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_WashDryScreen
+void ui_WashDryScreen_screen_init(void);
+extern lv_obj_t * ui_WashDryScreen;
+extern lv_obj_t * ui_WashDryTopCntr;
+extern lv_obj_t * ui_eevaWDLogoImg;
+extern lv_obj_t * ui_backWDImg;
+extern lv_obj_t * ui_backWDLbl;
+extern lv_obj_t * ui_infoWDImg;
+extern lv_obj_t * ui_washContainer;
+extern lv_obj_t * ui_WashCntrLbl;
+void ui_event_NormalWashPanel1(lv_event_t * e);
+extern lv_obj_t * ui_NormalWashPanel1;
+extern lv_obj_t * ui_normalLbl1;
+extern lv_obj_t * ui_normalBtmLbl1;
+extern lv_obj_t * ui_normalTimeLbl1;
+void ui_event_IntenseWashPanel1(lv_event_t * e);
+extern lv_obj_t * ui_IntenseWashPanel1;
+extern lv_obj_t * ui_intenseLbl1;
+extern lv_obj_t * ui_intenseBtmLbl1;
+extern lv_obj_t * ui_intenseTimeLbl1;
+void ui_event_DelicateWashPanel1(lv_event_t * e);
+extern lv_obj_t * ui_DelicateWashPanel1;
+extern lv_obj_t * ui_delicateLbl1;
+extern lv_obj_t * ui_delicateBtmLbl1;
+extern lv_obj_t * ui_delicateTimeLbl1;
+extern lv_obj_t * ui_customizeWashDryLbl;
+extern lv_obj_t * ui_WDBtmDescLbl;
+extern lv_obj_t * ui_DryContainer;
+extern lv_obj_t * ui_DryCntrLbl;
+void ui_event_NormalWashPanel2(lv_event_t * e);
+extern lv_obj_t * ui_NormalWashPanel2;
+extern lv_obj_t * ui_normalLbl2;
+extern lv_obj_t * ui_normalBtmLbl2;
+extern lv_obj_t * ui_normalTimeLbl2;
+void ui_event_IntenseWashPanel2(lv_event_t * e);
+extern lv_obj_t * ui_IntenseWashPanel2;
+extern lv_obj_t * ui_intenseLbl2;
+extern lv_obj_t * ui_intenseBtmLbl2;
+extern lv_obj_t * ui_intenseTimeLbl2;
+void ui_event_DelicateWashPanel2(lv_event_t * e);
+extern lv_obj_t * ui_DelicateWashPanel2;
+extern lv_obj_t * ui_delicateLbl2;
+extern lv_obj_t * ui_delicateBtmLbl2;
+extern lv_obj_t * ui_delicateTimeLbl2;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
