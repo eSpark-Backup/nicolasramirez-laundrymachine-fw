@@ -247,10 +247,12 @@ void ui_event_homeDryPanel(lv_event_t * e)
 void ui_event_WashTimerPauseBtn(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
 
     if(event_code == LV_EVENT_PRESSED) {
         _ui_state_modify(ui_pauseBtnLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_WashTimerPauseBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        _ui_checked_set_text_value(ui_pauseBtnLbl, target, "Resume", "Pause");
     }
 }
 

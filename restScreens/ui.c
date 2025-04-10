@@ -185,6 +185,7 @@ lv_obj_t * ui_infoFillTankCntr3;
 lv_obj_t * ui_infoFillTankPanel3;
 lv_obj_t * ui_infoFillTankImg3;
 lv_obj_t * ui_infoFillTankStep3;
+void ui_event_BtmETInfoCntr(lv_event_t * e);
 lv_obj_t * ui_BtmETInfoCntr;
 lv_obj_t * ui_infoETImg;
 lv_obj_t * ui_infoETLbl;
@@ -353,6 +354,24 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
 
     if(event_code == LV_EVENT_PRESSED) {
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_TimerStartScreen_screen_init);
+    }
+}
+
+void ui_event_BtmETInfoCntr(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    lv_obj_t * target = lv_event_get_target(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_checked_set_text_value(ui_infoETLbl, target, "Show me how to drain\nthe removable tank",
+                                   "Show me how to fill the\nremovable tank");
+        _ui_checked_set_text_value(ui_mainTimeRemainLbl1, target, "How to fill the removable tank",
+                                   "How to drain the removable tank");
+        _ui_checked_set_text_value(ui_infoFillTankStep2, target,
+                                   "Take sink and place the cap\nunder any water stream to easily\nfill",
+                                   "Take tank to the sink(or under\nxouncount) the cup into sink,\nand press the drain button!");
+        _ui_checked_set_text_value(ui_infoFillTankStep3, target, "Reinsert into Eeva!",
+                                   "\nTank will empty itself\nautomatically!");
     }
 }
 

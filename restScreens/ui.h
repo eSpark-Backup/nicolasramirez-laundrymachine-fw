@@ -193,6 +193,7 @@ extern lv_obj_t * ui_infoFillTankCntr3;
 extern lv_obj_t * ui_infoFillTankPanel3;
 extern lv_obj_t * ui_infoFillTankImg3;
 extern lv_obj_t * ui_infoFillTankStep3;
+void ui_event_BtmETInfoCntr(lv_event_t * e);
 extern lv_obj_t * ui_BtmETInfoCntr;
 extern lv_obj_t * ui_infoETImg;
 extern lv_obj_t * ui_infoETLbl;

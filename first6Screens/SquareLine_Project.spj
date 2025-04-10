@@ -5668,6 +5668,50 @@
                       }
                     ],
                     "InheritedType": 10
+                  },
+                  {
+                    "nid": 1000532,
+                    "strtype": "_event/action",
+                    "strval": "SET TEXT VALUE WHEN CHECKED",
+                    "childs": [
+                      {
+                        "nid": 1000533,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/Name",
+                        "strval": "SET TEXT VALUE FROM CHECKED",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000534,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/Call",
+                        "strval": "SetTextValueChecked( <{Target}>, event_struct.get_target(), \"<{On_text}>\", \"<{Off_text}>\")",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000535,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/CallC",
+                        "strval": "_ui_checked_set_text_value( <{Target}>, target, \"<{On_text}>\", \"<{Off_text}>\");",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000536,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/Target",
+                        "strval": "GUID13433642-501796S936499",
+                        "InheritedType": 9
+                      },
+                      {
+                        "nid": 1000537,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/On_text",
+                        "strval": "Resume",
+                        "InheritedType": 10
+                      },
+                      {
+                        "nid": 1000538,
+                        "strtype": "SET TEXT VALUE WHEN CHECKED/Off_text",
+                        "strval": "Pause",
+                        "InheritedType": 10
+                      }
+                    ],
+                    "InheritedType": 10
                   }
                 ],
                 "InheritedType": 4
@@ -28299,7 +28343,7 @@
     "drive_fatfs_path": "",
     "naming": "Name",
     "naming_force_lowercase": false,
-    "nidcnt": 1000525,
+    "nidcnt": 1000539,
     "BitDepth": 16,
     "Name": "SquareLine_Project"
   }
