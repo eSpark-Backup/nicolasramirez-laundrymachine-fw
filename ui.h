@@ -41,42 +41,6 @@ extern lv_obj_t * ui_homeDescLbl;
 extern lv_obj_t * ui_homeBtmDescLbl;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashScreen
-void ui_WashScreen_screen_init(void);
-extern lv_obj_t * ui_WashScreen;
-void ui_event_NormalWashPanel(lv_event_t * e);
-extern lv_obj_t * ui_NormalWashPanel;
-extern lv_obj_t * ui_normalLbl;
-extern lv_obj_t * ui_normalBtmLbl;
-extern lv_obj_t * ui_normalTimeLbl;
-void ui_event_IntenseWashPanel(lv_event_t * e);
-extern lv_obj_t * ui_IntenseWashPanel;
-extern lv_obj_t * ui_intenseLbl;
-extern lv_obj_t * ui_intenseBtmLbl;
-extern lv_obj_t * ui_intenseTimeLbl;
-void ui_event_DelicateWashPanel(lv_event_t * e);
-extern lv_obj_t * ui_DelicateWashPanel;
-extern lv_obj_t * ui_delicateLbl;
-extern lv_obj_t * ui_delicateBtmLbl;
-extern lv_obj_t * ui_delicateTimeLbl;
-extern lv_obj_t * ui_justWashTopCntr;
-extern lv_obj_t * ui_eevaJWLogoImg;
-extern lv_obj_t * ui_backJWImg;
-extern lv_obj_t * ui_backLbl;
-extern lv_obj_t * ui_infoJWImg;
-extern lv_obj_t * ui_customizeJustWashLbl;
-extern lv_obj_t * ui_WashSettingsLbl;
-extern lv_obj_t * ui_JWBtmDescLbl;
-void ui_event_JustWashStartBtn(lv_event_t * e);
-extern lv_obj_t * ui_JustWashStartBtn;
-extern lv_obj_t * ui_startLbl;
-extern lv_obj_t * ui_TimeCntr;
-extern lv_obj_t * ui_totCycTimeLbl;
-extern lv_obj_t * ui_cycleMinLbl;
-extern lv_obj_t * ui_cycleTimeLbl;
-extern lv_obj_t * ui_Image6;
-// CUSTOM VARIABLES
-
 // SCREEN: ui_TimerStartScreen
 void ui_TimerStartScreen_screen_init(void);
 extern lv_obj_t * ui_TimerStartScreen;
@@ -87,6 +51,7 @@ extern lv_obj_t * ui_infoTRImg;
 extern lv_obj_t * ui_mainTimeRemainLbl;
 extern lv_obj_t * ui_TimeRemainBtmLbl;
 extern lv_obj_t * ui_TRBtmDescLbl;
+void ui_event_WashTimerPauseBtn(lv_event_t * e);
 extern lv_obj_t * ui_WashTimerPauseBtn;
 extern lv_obj_t * ui_pauseBtnLbl;
 extern lv_obj_t * ui_JustWashEndBtn;
@@ -200,6 +165,42 @@ extern lv_obj_t * ui_mainTimeRemainLbl2;
 extern lv_obj_t * ui_TimeRemainBtmLbl2;
 // CUSTOM VARIABLES
 
+// SCREEN: ui_WashScreen
+void ui_WashScreen_screen_init(void);
+extern lv_obj_t * ui_WashScreen;
+void ui_event_NormalWashPanel(lv_event_t * e);
+extern lv_obj_t * ui_NormalWashPanel;
+extern lv_obj_t * ui_normalLbl;
+extern lv_obj_t * ui_normalBtmLbl;
+extern lv_obj_t * ui_normalTimeLbl;
+void ui_event_IntenseWashPanel(lv_event_t * e);
+extern lv_obj_t * ui_IntenseWashPanel;
+extern lv_obj_t * ui_intenseLbl;
+extern lv_obj_t * ui_intenseBtmLbl;
+extern lv_obj_t * ui_intenseTimeLbl;
+void ui_event_DelicateWashPanel(lv_event_t * e);
+extern lv_obj_t * ui_DelicateWashPanel;
+extern lv_obj_t * ui_delicateLbl;
+extern lv_obj_t * ui_delicateBtmLbl;
+extern lv_obj_t * ui_delicateTimeLbl;
+extern lv_obj_t * ui_justWashTopCntr;
+extern lv_obj_t * ui_eevaJWLogoImg;
+extern lv_obj_t * ui_backJWImg;
+extern lv_obj_t * ui_backLbl;
+extern lv_obj_t * ui_infoJWImg;
+extern lv_obj_t * ui_customizeJustWashLbl;
+extern lv_obj_t * ui_WashSettingsLbl;
+extern lv_obj_t * ui_JWBtmDescLbl;
+void ui_event_JustWashStartBtn(lv_event_t * e);
+extern lv_obj_t * ui_JustWashStartBtn;
+extern lv_obj_t * ui_startLbl;
+extern lv_obj_t * ui_TimeCntr;
+extern lv_obj_t * ui_totCycTimeLbl;
+extern lv_obj_t * ui_cycleMinLbl;
+extern lv_obj_t * ui_cycleTimeLbl;
+extern lv_obj_t * ui_Image6;
+// CUSTOM VARIABLES
+
 // EVENTS
 
 extern lv_obj_t * ui____initial_actions0;
@@ -212,13 +213,13 @@ LV_IMG_DECLARE(ui_img_turbineicon_png);    // assets/turbineIcon.png
 LV_IMG_DECLARE(ui_img_eevalogo_png);    // assets/eevaLogo.png
 LV_IMG_DECLARE(ui_img_settingsicon_png);    // assets/settingsIcon.png
 LV_IMG_DECLARE(ui_img_infoicon_png);    // assets/infoIcon.png
-LV_IMG_DECLARE(ui_img_backicon_png);    // assets/backIcon.png
-LV_IMG_DECLARE(ui_img_clockicon_png);    // assets/clockIcon.png
 LV_IMG_DECLARE(ui_img_alarmclock_png);    // assets/AlarmClock.png
 LV_IMG_DECLARE(ui_img_last_screen_png);    // assets/Last Screen.png
+LV_IMG_DECLARE(ui_img_backicon_png);    // assets/backIcon.png
 LV_IMG_DECLARE(ui_img_frame_12_png);    // assets/Frame 12.png
 LV_IMG_DECLARE(ui_img_frame_13_png);    // assets/Frame 13.png
 LV_IMG_DECLARE(ui_img_frame_14_png);    // assets/Frame 14.png
+LV_IMG_DECLARE(ui_img_clockicon_png);    // assets/clockIcon.png
 
 // UI INIT
 void ui_init(void);

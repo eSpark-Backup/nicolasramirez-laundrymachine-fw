@@ -102,6 +102,8 @@ void ui_TimerStartScreen_screen_init(void)
     lv_obj_set_style_border_color(ui_WashTimerPauseBtn, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_opa(ui_WashTimerPauseBtn, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_border_width(ui_WashTimerPauseBtn, 2, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_WashTimerPauseBtn, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_CHECKED);
+    lv_obj_set_style_bg_opa(ui_WashTimerPauseBtn, 255, LV_PART_MAIN | LV_STATE_CHECKED);
 
     ui_pauseBtnLbl = lv_label_create(ui_WashTimerPauseBtn);
     lv_obj_set_width(ui_pauseBtnLbl, LV_SIZE_CONTENT);   /// 1
@@ -115,6 +117,8 @@ void ui_TimerStartScreen_screen_init(void)
     lv_obj_set_style_text_letter_space(ui_pauseBtnLbl, -1, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_line_space(ui_pauseBtnLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_pauseBtnLbl, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_color(ui_pauseBtnLbl, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_CHECKED);
+    lv_obj_set_style_text_opa(ui_pauseBtnLbl, 255, LV_PART_MAIN | LV_STATE_CHECKED);
 
     ui_JustWashEndBtn = lv_btn_create(ui_TimerStartScreen);
     lv_obj_set_width(ui_JustWashEndBtn, 200);
@@ -182,5 +186,7 @@ void ui_TimerStartScreen_screen_init(void)
     lv_obj_set_align(ui_timerImg, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_timerImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
     lv_obj_clear_flag(ui_timerImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+
+    lv_obj_add_event_cb(ui_WashTimerPauseBtn, ui_event_WashTimerPauseBtn, LV_EVENT_ALL, NULL);
 
 }
