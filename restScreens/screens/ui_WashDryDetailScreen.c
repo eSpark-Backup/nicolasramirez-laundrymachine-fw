@@ -332,8 +332,6 @@ void ui_WashDryDetailScreen_screen_init(void)
     lv_obj_set_style_text_opa(ui_TimeRemainBtmLbl2, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_TimeRemainBtmLbl2, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_WashSelBtn, ui_event_WashSelBtn, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_DrySelBtn, ui_event_DrySelBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustWashStartBtn1, ui_event_JustWashStartBtn1, LV_EVENT_ALL, NULL);
 
 }
