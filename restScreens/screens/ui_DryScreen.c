@@ -5,14 +5,14 @@
 
 #include "../ui.h"
 
-void ui_WashScreen1_screen_init(void)
+void ui_DryScreen_screen_init(void)
 {
-    ui_WashScreen1 = lv_obj_create(NULL);
-    lv_obj_clear_flag(ui_WashScreen1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
-    lv_obj_set_style_bg_color(ui_WashScreen1, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_bg_opa(ui_WashScreen1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    ui_DryScreen = lv_obj_create(NULL);
+    lv_obj_clear_flag(ui_DryScreen, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_DryScreen, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_DryScreen, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_SmallDryPanel = lv_obj_create(ui_WashScreen1);
+    ui_SmallDryPanel = lv_obj_create(ui_DryScreen);
     lv_obj_set_width(ui_SmallDryPanel, 210);
     lv_obj_set_height(ui_SmallDryPanel, 86);
     lv_obj_set_x(ui_SmallDryPanel, -225);
@@ -68,7 +68,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_smallDryTimeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_smallDryTimeLbl, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_FullDryPanel = lv_obj_create(ui_WashScreen1);
+    ui_FullDryPanel = lv_obj_create(ui_DryScreen);
     lv_obj_set_width(ui_FullDryPanel, 210);
     lv_obj_set_height(ui_FullDryPanel, 86);
     lv_obj_set_x(ui_FullDryPanel, 0);
@@ -124,7 +124,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_FullDryTimeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_FullDryTimeLbl, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_SpinDryPanel = lv_obj_create(ui_WashScreen1);
+    ui_SpinDryPanel = lv_obj_create(ui_DryScreen);
     lv_obj_set_width(ui_SpinDryPanel, 210);
     lv_obj_set_height(ui_SpinDryPanel, 86);
     lv_obj_set_x(ui_SpinDryPanel, 225);
@@ -180,7 +180,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_SpinDryTimeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_SpinDryTimeLbl, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_justDryTopCntr = lv_obj_create(ui_WashScreen1);
+    ui_justDryTopCntr = lv_obj_create(ui_DryScreen);
     lv_obj_remove_style_all(ui_justDryTopCntr);
     lv_obj_set_width(ui_justDryTopCntr, 778);
     lv_obj_set_height(ui_justDryTopCntr, 32);
@@ -230,7 +230,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_add_flag(ui_infoJDImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
     lv_obj_clear_flag(ui_infoJDImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    ui_customizeJustDryLbl = lv_label_create(ui_WashScreen1);
+    ui_customizeJustDryLbl = lv_label_create(ui_DryScreen);
     lv_obj_set_width(ui_customizeJustDryLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_customizeJustDryLbl, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_customizeJustDryLbl, 0);
@@ -243,7 +243,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_line_space(ui_customizeJustDryLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_customizeJustDryLbl, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_DrySettingsLbl = lv_label_create(ui_WashScreen1);
+    ui_DrySettingsLbl = lv_label_create(ui_DryScreen);
     lv_obj_set_width(ui_DrySettingsLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_DrySettingsLbl, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_DrySettingsLbl, 0);
@@ -256,7 +256,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_line_space(ui_DrySettingsLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_DrySettingsLbl, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_JDBtmDescLbl = lv_label_create(ui_WashScreen1);
+    ui_JDBtmDescLbl = lv_label_create(ui_DryScreen);
     lv_obj_set_width(ui_JDBtmDescLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_JDBtmDescLbl, LV_SIZE_CONTENT);    /// 1
     lv_obj_set_x(ui_JDBtmDescLbl, 0);
@@ -267,7 +267,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_JDBtmDescLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_JDBtmDescLbl, &lv_font_montserrat_8, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_JustDryStartBtn = lv_btn_create(ui_WashScreen1);
+    ui_JustDryStartBtn = lv_btn_create(ui_DryScreen);
     lv_obj_set_width(ui_JustDryStartBtn, 200);
     lv_obj_set_height(ui_JustDryStartBtn, 64);
     lv_obj_set_x(ui_JustDryStartBtn, 220);
@@ -290,7 +290,7 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_opa(ui_startJDLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_startJDLbl, &lv_font_montserrat_24, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_JDTimeCntr = lv_obj_create(ui_WashScreen1);
+    ui_JDTimeCntr = lv_obj_create(ui_DryScreen);
     lv_obj_remove_style_all(ui_JDTimeCntr);
     lv_obj_set_width(ui_JDTimeCntr, 376);
     lv_obj_set_height(ui_JDTimeCntr, 101);
@@ -343,15 +343,15 @@ void ui_WashScreen1_screen_init(void)
     lv_obj_set_style_text_font(ui_JDCycleTimeLbl, &lv_font_montserrat_46, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_transform_zoom(ui_JDCycleTimeLbl, 330, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    ui_JDAlarmClock = lv_img_create(ui_JDTimeCntr);
-    lv_img_set_src(ui_JDAlarmClock, &ui_img_clockicon_png);
-    lv_obj_set_width(ui_JDAlarmClock, LV_SIZE_CONTENT);   /// 1
-    lv_obj_set_height(ui_JDAlarmClock, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_JDAlarmClock, -122);
-    lv_obj_set_y(ui_JDAlarmClock, 14);
-    lv_obj_set_align(ui_JDAlarmClock, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_JDAlarmClock, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
-    lv_obj_clear_flag(ui_JDAlarmClock, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    ui_Image4 = lv_img_create(ui_JDTimeCntr);
+    lv_img_set_src(ui_Image4, &ui_img_clockicon_png);
+    lv_obj_set_width(ui_Image4, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_Image4, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_Image4, -122);
+    lv_obj_set_y(ui_Image4, 14);
+    lv_obj_set_align(ui_Image4, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_Image4, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_clear_flag(ui_Image4, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     lv_obj_add_event_cb(ui_SmallDryPanel, ui_event_SmallDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_FullDryPanel, ui_event_FullDryPanel, LV_EVENT_ALL, NULL);

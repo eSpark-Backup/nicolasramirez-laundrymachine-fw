@@ -35,6 +35,7 @@ extern lv_obj_t * ui_justDryLbl;
 extern lv_obj_t * ui_homeTopCntr;
 extern lv_obj_t * ui_eevaLogoImg;
 extern lv_obj_t * ui_settingsImg;
+void ui_event_settingsImg1(lv_event_t * e);
 extern lv_obj_t * ui_settingsImg1;
 extern lv_obj_t * ui_homeMainLbl;
 extern lv_obj_t * ui_homeDescLbl;
@@ -133,9 +134,9 @@ extern lv_obj_t * ui_cycleTimeLbl;
 extern lv_obj_t * ui_Image6;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashScreen1
-void ui_WashScreen1_screen_init(void);
-extern lv_obj_t * ui_WashScreen1;
+// SCREEN: ui_DryScreen
+void ui_DryScreen_screen_init(void);
+extern lv_obj_t * ui_DryScreen;
 void ui_event_SmallDryPanel(lv_event_t * e);
 extern lv_obj_t * ui_SmallDryPanel;
 extern lv_obj_t * ui_smallDryLbl;
@@ -167,7 +168,37 @@ extern lv_obj_t * ui_totJDCycTimeLbl;
 extern lv_obj_t * ui_addJDCycTimeLbl;
 extern lv_obj_t * ui_JDCycleMinLbl;
 extern lv_obj_t * ui_JDCycleTimeLbl;
-extern lv_obj_t * ui_JDAlarmClock;
+extern lv_obj_t * ui_Image4;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_infoScreen
+void ui_infoScreen_screen_init(void);
+extern lv_obj_t * ui_infoScreen;
+extern lv_obj_t * ui_infoFullTankTopCntr;
+extern lv_obj_t * ui_eevaFTLogoImg;
+extern lv_obj_t * ui_backFTImg;
+extern lv_obj_t * ui_infoFTImg;
+extern lv_obj_t * ui_backJDLbl2;
+extern lv_obj_t * ui_mainTimeRemainLbl1;
+extern lv_obj_t * ui_TRBtmDescLbl1;
+extern lv_obj_t * ui_infoFillTankCntr1;
+extern lv_obj_t * ui_infoFillTankPanel1;
+extern lv_obj_t * ui_infoFillTankImg1;
+extern lv_obj_t * ui_infoFillTankStep1;
+extern lv_obj_t * ui_infoFillTankCntr2;
+extern lv_obj_t * ui_infoFillTankPanel2;
+extern lv_obj_t * ui_infoFillTankImg2;
+extern lv_obj_t * ui_infoFillTankStep2;
+extern lv_obj_t * ui_infoFillTankCntr3;
+extern lv_obj_t * ui_infoFillTankPanel3;
+extern lv_obj_t * ui_infoFillTankImg3;
+extern lv_obj_t * ui_infoFillTankStep3;
+extern lv_obj_t * ui_BtmETInfoCntr;
+extern lv_obj_t * ui_infoETImg;
+extern lv_obj_t * ui_infoETLbl;
+extern lv_obj_t * ui_BtmETInfoCntr1;
+extern lv_obj_t * ui_infoETImg1;
+extern lv_obj_t * ui_infoETLbl1;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -185,6 +216,8 @@ LV_IMG_DECLARE(ui_img_infoicon_png);    // assets/infoIcon.png
 LV_IMG_DECLARE(ui_img_alarmclock_png);    // assets/AlarmClock.png
 LV_IMG_DECLARE(ui_img_backicon_png);    // assets/backIcon.png
 LV_IMG_DECLARE(ui_img_clockicon_png);    // assets/clockIcon.png
+LV_IMG_DECLARE(ui_img_ion_image_png);    // assets/ion_image.png
+LV_IMG_DECLARE(ui_img_qrcode_png);    // assets/qrCode.png
 
 // UI INIT
 void ui_init(void);

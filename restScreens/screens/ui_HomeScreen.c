@@ -174,7 +174,7 @@ void ui_HomeScreen_screen_init(void)
     lv_obj_set_x(ui_settingsImg1, 365);
     lv_obj_set_y(ui_settingsImg1, 0);
     lv_obj_set_align(ui_settingsImg1, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_settingsImg1, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_add_flag(ui_settingsImg1, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_clear_flag(ui_settingsImg1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_homeMainLbl = lv_label_create(ui_HomeScreen);
@@ -218,5 +218,6 @@ void ui_HomeScreen_screen_init(void)
     lv_obj_add_event_cb(ui_homeWashPanel, ui_event_homeWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_WashDryPanel, ui_event_WashDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_homeDryPanel, ui_event_homeDryPanel, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_settingsImg1, ui_event_settingsImg1, LV_EVENT_ALL, NULL);
 
 }

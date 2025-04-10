@@ -27,6 +27,7 @@ lv_obj_t * ui_justDryLbl;
 lv_obj_t * ui_homeTopCntr;
 lv_obj_t * ui_eevaLogoImg;
 lv_obj_t * ui_settingsImg;
+void ui_event_settingsImg1(lv_event_t * e);
 lv_obj_t * ui_settingsImg1;
 lv_obj_t * ui_homeMainLbl;
 lv_obj_t * ui_homeDescLbl;
@@ -125,9 +126,9 @@ lv_obj_t * ui_cycleTimeLbl;
 lv_obj_t * ui_Image6;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashScreen1
-void ui_WashScreen1_screen_init(void);
-lv_obj_t * ui_WashScreen1;
+// SCREEN: ui_DryScreen
+void ui_DryScreen_screen_init(void);
+lv_obj_t * ui_DryScreen;
 void ui_event_SmallDryPanel(lv_event_t * e);
 lv_obj_t * ui_SmallDryPanel;
 lv_obj_t * ui_smallDryLbl;
@@ -159,7 +160,37 @@ lv_obj_t * ui_totJDCycTimeLbl;
 lv_obj_t * ui_addJDCycTimeLbl;
 lv_obj_t * ui_JDCycleMinLbl;
 lv_obj_t * ui_JDCycleTimeLbl;
-lv_obj_t * ui_JDAlarmClock;
+lv_obj_t * ui_Image4;
+// CUSTOM VARIABLES
+
+// SCREEN: ui_infoScreen
+void ui_infoScreen_screen_init(void);
+lv_obj_t * ui_infoScreen;
+lv_obj_t * ui_infoFullTankTopCntr;
+lv_obj_t * ui_eevaFTLogoImg;
+lv_obj_t * ui_backFTImg;
+lv_obj_t * ui_infoFTImg;
+lv_obj_t * ui_backJDLbl2;
+lv_obj_t * ui_mainTimeRemainLbl1;
+lv_obj_t * ui_TRBtmDescLbl1;
+lv_obj_t * ui_infoFillTankCntr1;
+lv_obj_t * ui_infoFillTankPanel1;
+lv_obj_t * ui_infoFillTankImg1;
+lv_obj_t * ui_infoFillTankStep1;
+lv_obj_t * ui_infoFillTankCntr2;
+lv_obj_t * ui_infoFillTankPanel2;
+lv_obj_t * ui_infoFillTankImg2;
+lv_obj_t * ui_infoFillTankStep2;
+lv_obj_t * ui_infoFillTankCntr3;
+lv_obj_t * ui_infoFillTankPanel3;
+lv_obj_t * ui_infoFillTankImg3;
+lv_obj_t * ui_infoFillTankStep3;
+lv_obj_t * ui_BtmETInfoCntr;
+lv_obj_t * ui_infoETImg;
+lv_obj_t * ui_infoETLbl;
+lv_obj_t * ui_BtmETInfoCntr1;
+lv_obj_t * ui_infoETImg1;
+lv_obj_t * ui_infoETLbl1;
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -210,6 +241,15 @@ void ui_event_homeDryPanel(lv_event_t * e)
         _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+    }
+}
+
+void ui_event_settingsImg1(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        _ui_screen_change(&ui_infoScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_infoScreen_screen_init);
     }
 }
 
@@ -328,7 +368,8 @@ void ui_init(void)
     ui_TimerStartScreen_screen_init();
     ui_WashDryDetailScreen_screen_init();
     ui_WashScreen_screen_init();
-    ui_WashScreen1_screen_init();
+    ui_DryScreen_screen_init();
+    ui_infoScreen_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_HomeScreen);
 }
