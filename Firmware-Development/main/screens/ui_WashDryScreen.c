@@ -461,5 +461,6 @@ void ui_WashDryScreen_screen_init(void)
     lv_obj_add_event_cb(ui_fullDrumPanel, ui_event_fullDrumPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_noHeatPanel, ui_event_noHeatPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_backWDImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_infoWDImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

@@ -358,5 +358,6 @@ void ui_DryScreen_screen_init(void)
     lv_obj_add_event_cb(ui_SpinDryPanel, ui_event_SpinDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustDryStartBtn, ui_event_JustDryStartBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_backJDImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
-    
+    lv_obj_add_event_cb(ui_infoJDImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
+
 }

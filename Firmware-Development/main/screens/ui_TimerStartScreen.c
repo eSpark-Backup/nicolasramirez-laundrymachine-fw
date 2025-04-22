@@ -190,5 +190,6 @@ void ui_TimerStartScreen_screen_init(void)
     lv_obj_add_event_cb(ui_WashTimerPauseBtn, ui_event_WashTimerPauseBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustWashEndBtn, ui_event_JustWashEndBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_backTRImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_infoTRImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

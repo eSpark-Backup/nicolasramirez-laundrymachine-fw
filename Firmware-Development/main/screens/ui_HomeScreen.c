@@ -218,5 +218,6 @@ void ui_HomeScreen_screen_init(void)
     lv_obj_add_event_cb(ui_homeWashPanel, ui_event_homeWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_WashDryPanel, ui_event_WashDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_homeDryPanel, ui_event_homeDryPanel, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_settingsImg1, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

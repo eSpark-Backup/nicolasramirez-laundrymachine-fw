@@ -336,5 +336,6 @@ void ui_WashDryDetailScreen_screen_init(void)
     lv_obj_add_event_cb(ui_DrySelBtn, ui_event_DrySelBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustWashStartBtn1, ui_event_JustWashStartBtn1, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_backJWImg1, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_infoJWImg1, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

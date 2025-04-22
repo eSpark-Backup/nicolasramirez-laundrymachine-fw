@@ -39,6 +39,7 @@ extern lv_obj_t * ui_settingsImg1;
 extern lv_obj_t * ui_homeMainLbl;
 extern lv_obj_t * ui_homeDescLbl;
 extern lv_obj_t * ui_homeBtmDescLbl;
+void ui_event_infoEvent(lv_event_t * e);
 // CUSTOM VARIABLES
 
 // SCREEN: ui_TimerStartScreen

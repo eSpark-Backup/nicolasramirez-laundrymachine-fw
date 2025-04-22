@@ -406,6 +406,16 @@ void change_to_washDry_detail_screen()
 }
 
 ///////////////////// FUNCTIONS ////////////////////
+void ui_event_infoEvent(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+
+    if(event_code == LV_EVENT_PRESSED) {
+        last_uiScreen = lv_disp_get_scr_act(NULL);
+        _ui_screen_change(&ui_infoScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_infoScreen_screen_init);
+    }
+}
+
 void ui_event_homeWashPanel(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
