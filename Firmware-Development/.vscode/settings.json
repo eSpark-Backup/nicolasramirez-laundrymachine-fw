@@ -1,0 +1,29 @@
+{
+    "idf.portWin": "COM23",
+    "idf.customExtraVars": {
+        "OPENOCD_SCRIPTS": "C:\\Espressif\\tools\\openocd-esp32\\v0.12.0-esp32-20230419/openocd-esp32/share/openocd/scripts",
+        "IDF_CCACHE_ENABLE": "1",
+        "ESP_ROM_ELF_DIR": "C:\\Espressif\\tools\\esp-rom-elfs\\20230320/",
+        "IDF_TARGET": "esp32s3"
+    },
+    "idf.openOcdConfigs": [
+        "board/esp32s3-builtin.cfg"
+    ],
+    "idf.flashType": "UART",
+    "files.associations": {
+        "waveshare_rgb_lcd_port.h": "c",
+        "i2c.h": "c",
+        "lvgl_port.h": "c",
+        "lv_demos.h": "c",
+        "lvgl.h": "c",
+        "lv_conf_internal.h": "c",
+        "esp_log.h": "c",
+        "engineering_mode.h": "c",
+        "ui.h": "c",
+        "freertos.h": "c",
+        "esp_lcd_panel_ops.h": "c"
+    },
+    "idf.espIdfPathWin": "C:\\Users\\eSpark\\esp\\v5.4.1\\esp-idf",
+    "idf.toolsPathWin": "c:\\Users\\eSpark\\esp\\v5.4.1\\.espressif",
+    "idf.pythonInstallPath": "c:\\Users\\eSpark\\esp\\v5.4.1\\.espressif\\tools\\idf-python\\3.11.2\\python.exe"
+}
