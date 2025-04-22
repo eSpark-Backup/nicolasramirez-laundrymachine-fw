@@ -292,6 +292,13 @@ typedef enum
 
 WashDrySelection selection = WASH_DRY_NONE;
 
+char mainTitleWash[30];
+char subTitleWash[255];
+int washSelTime = 0;
+char mainTitleDry[30];
+char subTitleDry[255];
+int drySelTime = 0;
+
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void clear_all_homeScreen_panels()
@@ -319,7 +326,7 @@ void clear_all_washScreen_panels()
     _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_normalLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_normalBtmLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    
+
     // Intense Wash Panel
     _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_intenseBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
@@ -381,6 +388,18 @@ void clear_all_washdryScreen_dryPanels()
     _ui_state_modify(ui_noHeatBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     
     if(selection) selection--;
+}
+
+void change_to_washDry_detail_screen()
+{
+    lv_label_set_text_fmt(ui_WashSelLbl,    "%s", mainTitleWash);
+    lv_label_set_text_fmt(ui_WashSelBtmLbl, "%s", subTitleWash);
+    lv_label_set_text_fmt(ui_WashSelTimeLbl,"%d", washSelTime);
+    lv_label_set_text_fmt(ui_DrySelLbl,     "%s", mainTitleDry);
+    lv_label_set_text_fmt(ui_DrySelBtmLbl,  "%s", subTitleDry);
+    lv_label_set_text_fmt(ui_DrySelTimeLbl, "%s", drySelTime);
+    lv_label_set_text_fmt(ui_cycleTimeLbl1, "%d", washSelTime + drySelTime);
+    _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
 }
 
 ///////////////////// FUNCTIONS ////////////////////
@@ -463,10 +482,13 @@ void ui_event_NorWashDryPanel(lv_event_t * e)
         _ui_state_modify(ui_norWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_norWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_norWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        washSelTime = 15;
     }
     if(selection == BOTH_SELECTED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+        strcpy(mainTitleWash, "Normal");
+        strcpy(subTitleWash, "For clothes with little ...");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -479,10 +501,13 @@ void ui_event_intWashDryPanel(lv_event_t * e)
         _ui_state_modify(ui_intWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_intWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_intWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        washSelTime = 45;
     }
     if(selection == BOTH_SELECTED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+        strcpy(mainTitleWash, "Intense");
+        strcpy(subTitleWash, "Stain small to medium load");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -495,10 +520,14 @@ void ui_event_delWashDryPanel(lv_event_t * e)
         _ui_state_modify(ui_delWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_delWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_delWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        washSelTime = 20;
     }
     if(selection == BOTH_SELECTED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+
+        strcpy(mainTitleWash, "Delicates");
+        strcpy(subTitleWash, "Stain for full load ords or other");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -511,10 +540,13 @@ void ui_event_halfDrumPanel(lv_event_t * e)
         _ui_state_modify(ui_halfDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_halfDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_halfDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        drySelTime = 75;
     }
-    if(event_code == LV_EVENT_PRESSED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+    if(selection == BOTH_SELECTED) {
+        strcpy(mainTitleDry, "Small to Medium Load");
+        strcpy(subTitleWash, "*Drum is half full or less");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -527,10 +559,13 @@ void ui_event_fullDrumPanel(lv_event_t * e)
         _ui_state_modify(ui_fullDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_fullDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_fullDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        drySelTime = 120;
     }
     if(selection == BOTH_SELECTED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+        strcpy(mainTitleDry, "Full Drum");
+        strcpy(subTitleDry, "*Drum is full");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -543,10 +578,13 @@ void ui_event_noHeatPanel(lv_event_t * e)
         _ui_state_modify(ui_noHeatPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_noHeatLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_noHeatBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        selection++;
+        if(selection != BOTH_SELECTED) selection++;
+        drySelTime = 10;
     }
     if(selection == BOTH_SELECTED) {
-        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
+        strcpy(mainTitleDry, "No Heat Dry");
+        strcpy(subTitleDry, "*Use a fraction less energy in exchange\nfor longer dry time");
+        change_to_washDry_detail_screen();
     }
 }
 
@@ -555,7 +593,10 @@ void ui_event_WashSelBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_washPanels();
         _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
+        lv_label_set_text(ui_WashSelLbl, "Normal");
+        lv_label_set_text(ui_WashSelBtmLbl, "For clothes with little ...");
     }
 }
 
@@ -564,7 +605,10 @@ void ui_event_DrySelBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_dryPanels();
         _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
+        lv_label_set_text(ui_DrySelLbl, "Small to Medium Load");
+        lv_label_set_text(ui_DrySelBtmLbl, "*Drum is half full or less");
     }
 }
 
