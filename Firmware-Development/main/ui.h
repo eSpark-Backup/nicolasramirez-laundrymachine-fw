@@ -201,6 +201,7 @@ extern lv_obj_t * ui_totCycTimeLbl;
 extern lv_obj_t * ui_cycleMinLbl;
 extern lv_obj_t * ui_cycleTimeLbl;
 extern lv_obj_t * ui_Image6;
+extern int cycleWashTime;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_DryScreen
