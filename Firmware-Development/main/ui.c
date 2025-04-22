@@ -194,6 +194,7 @@ lv_obj_t * ui_cycleMinLbl;
 lv_obj_t * ui_cycleTimeLbl;
 lv_obj_t * ui_Image6;
 int cycleWashTime = 15;
+int cycleDryTime = 115;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_DryScreen
@@ -282,7 +283,8 @@ lv_obj_t * ui____initial_actions0;
 
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
-void clear_all_homeScreen_panels() {
+void clear_all_homeScreen_panels()
+{
     // Home Wash
     _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
@@ -300,19 +302,41 @@ void clear_all_homeScreen_panels() {
     _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
 }
 
-void clear_all_washScreen_panels() {
-
+void clear_all_washScreen_panels()
+{
+    // Normal Wash Panel
     _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_normalLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_normalBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
+    
+    // Intense Wash Panel
     _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_intenseBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_intenseLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
+    
+    // Delicate Wash Panel
     _ui_state_modify(ui_DelicateWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_delicateLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_delicateBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+}
+
+void clear_all_dryScreen_panels()
+{
+    // Small Dry Panel
+    _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    
+    // Full Dry Panel
+    _ui_state_modify(ui_FullDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    
+    // Spin Dry Panel
+    _ui_state_modify(ui_SpinDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
 }
 
 ///////////////////// FUNCTIONS ////////////////////
@@ -550,9 +574,12 @@ void ui_event_SmallDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        clear_all_dryScreen_panels();
+        _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        lv_label_set_text(ui_JDCycleTimeLbl, "110");
+        cycleDryTime = 75;
     }
 }
 
@@ -561,9 +588,12 @@ void ui_event_FullDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_state_modify(ui_FullDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        clear_all_dryScreen_panels();
+        _ui_state_modify(ui_FullDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        lv_label_set_text(ui_JDCycleTimeLbl, "155");
+        cycleDryTime = 120;
     }
 }
 
@@ -572,9 +602,12 @@ void ui_event_SpinDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_state_modify(ui_SpinDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        clear_all_dryScreen_panels();
+        _ui_state_modify(ui_SpinDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        lv_label_set_text(ui_JDCycleTimeLbl, "45");
+        cycleDryTime = 10;
     }
 }
 
@@ -583,7 +616,7 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_FADE_ON, 500, 0, &ui_TimerStartScreen_screen_init);
+        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
     }
 }
 
