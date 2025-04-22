@@ -281,6 +281,17 @@ lv_obj_t * ui____initial_actions0;
 
 ///////////////////// ANIMATIONS ////////////////////
 
+///////////////////// CUSTOM VARIABLES ////////////////////
+
+typedef enum
+{
+    WASH_DRY_NONE,
+    ONE_SELECTED,
+    BOTH_SELECTED
+} WashDrySelection;
+
+WashDrySelection selection = WASH_DRY_NONE;
+
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void clear_all_homeScreen_panels()
@@ -306,37 +317,70 @@ void clear_all_washScreen_panels()
 {
     // Normal Wash Panel
     _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_normalLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_normalBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_normalLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_normalBtmLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     
     // Intense Wash Panel
     _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intenseBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intenseLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_intenseBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_intenseLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     
     // Delicate Wash Panel
     _ui_state_modify(ui_DelicateWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delicateLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delicateBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_delicateLbl,      LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_delicateBtmLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
 }
 
 void clear_all_dryScreen_panels()
 {
     // Small Dry Panel
     _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    
+    _ui_state_modify(ui_smallDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_smallDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
     // Full Dry Panel
-    _ui_state_modify(ui_FullDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_FullDryPanel,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_FullDryLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     
     // Spin Dry Panel
-    _ui_state_modify(ui_SpinDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_SpinDryPanel,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_SpinDryLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
     _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+}
 
+void clear_all_washdryScreen_washPanels()
+{
+    _ui_state_modify(ui_norWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_norWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_norWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
+    _ui_state_modify(ui_intWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_intWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_intWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
+    _ui_state_modify(ui_delWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_delWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_delWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    
+    if(selection) selection--;
+}
+
+void clear_all_washdryScreen_dryPanels()
+{
+    _ui_state_modify(ui_halfDrumPanel,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_halfDrumLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_halfDrumBtmLbl,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
+    _ui_state_modify(ui_fullDrumPanel,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_fullDrumBtmLbl,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_fullDrumLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+
+    _ui_state_modify(ui_noHeatPanel,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_noHeatLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    _ui_state_modify(ui_noHeatBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
+    
+    if(selection) selection--;
 }
 
 ///////////////////// FUNCTIONS ////////////////////
@@ -415,11 +459,13 @@ void ui_event_NorWashDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_washPanels();
         _ui_state_modify(ui_norWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_norWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_norWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
     }
-    if(event_code == LV_EVENT_PRESSED) {
+    if(selection == BOTH_SELECTED) {
         _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
     }
 }
@@ -429,9 +475,14 @@ void ui_event_intWashDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_washPanels();
         _ui_state_modify(ui_intWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_intWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_intWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
+    }
+    if(selection == BOTH_SELECTED) {
+        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
     }
 }
 
@@ -440,9 +491,14 @@ void ui_event_delWashDryPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_washPanels();
         _ui_state_modify(ui_delWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_delWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_delWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
+    }
+    if(selection == BOTH_SELECTED) {
+        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
     }
 }
 
@@ -451,9 +507,11 @@ void ui_event_halfDrumPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_dryPanels();
         _ui_state_modify(ui_halfDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_halfDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_halfDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
     }
     if(event_code == LV_EVENT_PRESSED) {
         _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
@@ -465,9 +523,14 @@ void ui_event_fullDrumPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_dryPanels();
         _ui_state_modify(ui_fullDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_fullDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_fullDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
+    }
+    if(selection == BOTH_SELECTED) {
+        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
     }
 }
 
@@ -476,9 +539,14 @@ void ui_event_noHeatPanel(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        clear_all_washdryScreen_dryPanels();
         _ui_state_modify(ui_noHeatPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_noHeatLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_noHeatBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
+        selection++;
+    }
+    if(selection == BOTH_SELECTED) {
+        _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
     }
 }
 
