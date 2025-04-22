@@ -308,5 +308,6 @@ void ui_infoScreen_screen_init(void)
     lv_obj_set_style_text_font(ui_infoETLbl1, &lv_font_montserrat_12, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_BtmETInfoCntr, ui_event_BtmETInfoCntr, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backFTImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
 
 }

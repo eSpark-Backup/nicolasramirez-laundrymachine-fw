@@ -299,6 +299,8 @@ char mainTitleDry[30];
 char subTitleDry[255];
 int drySelTime = 0;
 
+lv_obj_t * last_uiScreen;
+
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void clear_all_homeScreen_panels()
@@ -397,8 +399,9 @@ void change_to_washDry_detail_screen()
     lv_label_set_text_fmt(ui_WashSelTimeLbl,"%d", washSelTime);
     lv_label_set_text_fmt(ui_DrySelLbl,     "%s", mainTitleDry);
     lv_label_set_text_fmt(ui_DrySelBtmLbl,  "%s", subTitleDry);
-    lv_label_set_text_fmt(ui_DrySelTimeLbl, "%s", drySelTime);
+    lv_label_set_text_fmt(ui_DrySelTimeLbl, "%d", drySelTime);
     lv_label_set_text_fmt(ui_cycleTimeLbl1, "%d", washSelTime + drySelTime);
+    last_uiScreen = lv_disp_get_scr_act(NULL);
     _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
 }
 
@@ -412,6 +415,7 @@ void ui_event_homeWashPanel(lv_event_t * e)
         _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justWashLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_WashScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashScreen_screen_init);
     }
 }
@@ -426,6 +430,7 @@ void ui_event_WashDryPanel(lv_event_t * e)
         _ui_state_modify(ui_smallWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_smallDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_washDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
     }
 }
@@ -439,6 +444,7 @@ void ui_event_homeDryPanel(lv_event_t * e)
         _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_DryScreen_screen_init);
     }
 }
@@ -617,6 +623,7 @@ void ui_event_JustWashStartBtn1(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
     }
 }
@@ -668,7 +675,7 @@ void ui_event_backJWImg(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_screen_change(&ui_HomeScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_HomeScreen_screen_init);
+        _ui_screen_change(&last_uiScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
     }
 }
 
@@ -677,6 +684,7 @@ void ui_event_JustWashStartBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
     }
 }
@@ -728,6 +736,7 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
+        last_uiScreen = lv_disp_get_scr_act(NULL);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
     }
 }
@@ -760,10 +769,12 @@ void ui_init(void)
     lv_disp_set_theme(dispp, theme);
     ui_HomeScreen_screen_init();
     ui_TimerStartScreen_screen_init();
+    ui_DryScreen_screen_init();
     ui_LastSuccessScreen_screen_init();
     ui_WashDryScreen_screen_init();
     ui_WashDryDetailScreen_screen_init();
     ui_WashScreen_screen_init();
+    ui_infoScreen_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
     lv_disp_load_scr(ui_HomeScreen);
 }
