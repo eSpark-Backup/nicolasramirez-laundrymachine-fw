@@ -159,5 +159,6 @@ void ui_LastSuccessScreen_screen_init(void)
     lv_obj_set_style_text_font(ui_SuccessMainLbl, &lv_font_montserrat_30, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_lastScrPanel, ui_event_lastScrPanel, LV_EVENT_ALL, NULL);
-
+    lv_obj_add_event_cb(ui_backSuccessImg, ui_event_lastScrPanel, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_infoSuccessImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 }
