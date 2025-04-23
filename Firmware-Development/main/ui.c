@@ -193,8 +193,7 @@ lv_obj_t * ui_totCycTimeLbl;
 lv_obj_t * ui_cycleMinLbl;
 lv_obj_t * ui_cycleTimeLbl;
 lv_obj_t * ui_Image6;
-int cycleWashTime = 15;
-int cycleDryTime = 115;
+int cycleTimerClock = 15;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_DryScreen
@@ -300,7 +299,8 @@ char subTitleDry[255];
 int drySelTime = 0;
 
 lv_obj_t * last_uiScreen;
-
+lv_timer_t *countdown_timer = NULL;
+int startTime;
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void clear_all_homeScreen_panels()
@@ -405,6 +405,36 @@ void change_to_washDry_detail_screen()
     _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
 }
 
+void deleteCountdownTimer()
+{
+    if (countdown_timer) {
+        lv_timer_del(countdown_timer);
+        countdown_timer = NULL;
+    }
+}
+
+void updateTimer(lv_timer_t * timer)
+{
+    if (startTime > 0) {
+        startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
+        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", startTime);
+    } else {
+        // Countdown complete — stop the timer
+        deleteCountdownTimer();
+        lv_label_set_text(ui_timeRemainLbl, "0");
+        _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
+    }
+}
+
+void createCountdownTimer(int timeInMin)
+{
+    deleteCountdownTimer();
+    if (!countdown_timer) {  // Avoid multiple timers
+        startTime = timeInMin;
+        countdown_timer = lv_timer_create(updateTimer, 1000*60, NULL);
+    }
+}
+
 ///////////////////// FUNCTIONS ////////////////////
 void ui_event_infoEvent(lv_event_t * e)
 {
@@ -468,6 +498,13 @@ void ui_event_WashTimerPauseBtn(lv_event_t * e)
         _ui_state_modify(ui_pauseBtnLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_WashTimerPauseBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_checked_set_text_value(ui_pauseBtnLbl, target, "Resume", "Pause");
+        if (countdown_timer && lv_obj_has_state(target, LV_STATE_CHECKED)) {
+            lv_timer_pause(countdown_timer);
+        }
+        else
+        {
+            lv_timer_resume(countdown_timer);
+        }
     }
 }
 
@@ -477,6 +514,7 @@ void ui_event_JustWashEndBtn(lv_event_t * e)
 
     if(event_code == LV_EVENT_PRESSED) {
         _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
+        deleteCountdownTimer();
     }
 }
 
@@ -634,7 +672,9 @@ void ui_event_JustWashStartBtn1(lv_event_t * e)
 
     if(event_code == LV_EVENT_PRESSED) {
         last_uiScreen = lv_disp_get_scr_act(NULL);
+        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", washSelTime + drySelTime);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
+        createCountdownTimer(washSelTime + drySelTime);
     }
 }
 
@@ -648,7 +688,7 @@ void ui_event_NormalWashPanel(lv_event_t * e)
         _ui_state_modify(ui_normalLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_normalBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_cycleTimeLbl, "15");
-        cycleWashTime = 15;
+        cycleTimerClock = 15;
     }
 }
 
@@ -662,7 +702,7 @@ void ui_event_IntenseWashPanel(lv_event_t * e)
         _ui_state_modify(ui_intenseBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_intenseLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_cycleTimeLbl, "45");
-        cycleWashTime = 45;
+        cycleTimerClock = 45;
     }
 }
 
@@ -676,7 +716,7 @@ void ui_event_DelicateWashPanel(lv_event_t * e)
         _ui_state_modify(ui_delicateLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_delicateBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_cycleTimeLbl, "20");
-        cycleWashTime = 20;
+        cycleTimerClock = 20;
     }
 }
 
@@ -695,7 +735,9 @@ void ui_event_JustWashStartBtn(lv_event_t * e)
 
     if(event_code == LV_EVENT_PRESSED) {
         last_uiScreen = lv_disp_get_scr_act(NULL);
+        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
+        createCountdownTimer(cycleTimerClock);
     }
 }
 
@@ -709,7 +751,7 @@ void ui_event_SmallDryPanel(lv_event_t * e)
         _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_JDCycleTimeLbl, "110");
-        cycleDryTime = 75;
+        cycleTimerClock = 75;
     }
 }
 
@@ -723,7 +765,7 @@ void ui_event_FullDryPanel(lv_event_t * e)
         _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_JDCycleTimeLbl, "155");
-        cycleDryTime = 120;
+        cycleTimerClock = 120;
     }
 }
 
@@ -737,7 +779,7 @@ void ui_event_SpinDryPanel(lv_event_t * e)
         _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         lv_label_set_text(ui_JDCycleTimeLbl, "45");
-        cycleDryTime = 10;
+        cycleTimerClock = 10;
     }
 }
 
@@ -747,7 +789,9 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
 
     if(event_code == LV_EVENT_PRESSED) {
         last_uiScreen = lv_disp_get_scr_act(NULL);
+        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock + 35);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
+        createCountdownTimer(cycleTimerClock);
     }
 }
 
