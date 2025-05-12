@@ -290,8 +290,8 @@ void ui_WashDryDetailScreen_screen_init(void)
     ui_cycleTimeLbl1 = lv_label_create(ui_TimeCntr1);
     lv_obj_set_width(ui_cycleTimeLbl1, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_cycleTimeLbl1, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_cycleTimeLbl1, -3);
-    lv_obj_set_y(ui_cycleTimeLbl1, 9);
+    lv_obj_set_x(ui_cycleTimeLbl1, 5);
+    lv_obj_set_y(ui_cycleTimeLbl1, 20);
     lv_obj_set_align(ui_cycleTimeLbl1, LV_ALIGN_CENTER);
     lv_label_set_text(ui_cycleTimeLbl1, "90");
     lv_obj_set_style_text_color(ui_cycleTimeLbl1, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
