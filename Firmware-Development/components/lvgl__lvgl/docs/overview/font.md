@@ -48,6 +48,8 @@ Containing all the ASCII characters, the degree symbol (U+00B0), the bullet symb
 - `LV_FONT_MONTSERRAT_44` 44 px font
 - `LV_FONT_MONTSERRAT_46` 46 px font
 - `LV_FONT_MONTSERRAT_48` 48 px font
+- `LV_FONT_MONTSERRAT_60` 60 px font
+- `LV_FONT_MONTSERRAT_100` 100 px font
 
 ### Special fonts
 - `LV_FONT_MONTSERRAT_12_SUBPX` Same as normal 12 px font but with [subpixel rendering](#subpixel-rendering)

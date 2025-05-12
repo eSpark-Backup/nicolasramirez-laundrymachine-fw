@@ -168,14 +168,13 @@ void ui_TimerStartScreen_screen_init(void)
     ui_timeRemainLbl = lv_label_create(ui_TimerScrCntr);
     lv_obj_set_width(ui_timeRemainLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_timeRemainLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_timeRemainLbl, -8);
-    lv_obj_set_y(ui_timeRemainLbl, -20);
+    lv_obj_set_x(ui_timeRemainLbl, 20);
+    lv_obj_set_y(ui_timeRemainLbl, 10);
     lv_obj_set_align(ui_timeRemainLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_timeRemainLbl, "15");
     lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_timeRemainLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_timeRemainLbl, &lv_font_montserrat_46, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_zoom(ui_timeRemainLbl, 530, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_timeRemainLbl, &lv_font_montserrat_100, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_timerImg = lv_img_create(ui_TimerScrCntr);
     lv_img_set_src(ui_timerImg, &ui_img_alarmclock_png);

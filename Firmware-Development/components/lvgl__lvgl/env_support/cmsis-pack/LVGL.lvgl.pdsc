@@ -395,6 +395,8 @@
                 <file category="sourceC"            name="src/font/lv_font_montserrat_44.c" />
                 <file category="sourceC"            name="src/font/lv_font_montserrat_46.c" />
                 <file category="sourceC"            name="src/font/lv_font_montserrat_48.c" />
+                <file category="sourceC"            name="src/font/lv_font_montserrat_60.c" />
+                <file category="sourceC"            name="src/font/lv_font_montserrat_100.c" />
                 <file category="sourceC"            name="src/font/lv_font_simsun_16_cjk.c" />
                 <file category="sourceC"            name="src/font/lv_font_unscii_8.c" />
                 <file category="sourceC"            name="src/font/lv_font_unscii_16.c" />

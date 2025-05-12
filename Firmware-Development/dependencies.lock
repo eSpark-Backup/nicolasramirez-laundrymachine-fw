@@ -2,13 +2,13 @@ dependencies:
   espressif/esp_lcd_touch:
     dependencies: []
     source:
-      path: C:\Users\eSpark\Downloads\Compressed\waveshare-ui\components\espressif__esp_lcd_touch
+      path: C:\Users\eSpark\sparkProjects\Github\nicolasramirez-laundrymachine-fw\Firmware-Development\components\espressif__esp_lcd_touch
       type: local
     version: 1.1.2
   espressif/esp_lcd_touch_gt911:
     dependencies: []
     source:
-      path: C:\Users\eSpark\Downloads\Compressed\waveshare-ui\components\espressif__esp_lcd_touch_gt911
+      path: C:\Users\eSpark\sparkProjects\Github\nicolasramirez-laundrymachine-fw\Firmware-Development\components\espressif__esp_lcd_touch_gt911
       type: local
     version: 1.1.1~1
   idf:
@@ -18,7 +18,7 @@ dependencies:
   lvgl/lvgl:
     dependencies: []
     source:
-      path: C:\Users\eSpark\Downloads\Compressed\waveshare-ui\components\lvgl__lvgl
+      path: C:\Users\eSpark\sparkProjects\Github\nicolasramirez-laundrymachine-fw\Firmware-Development\components\lvgl__lvgl
       type: local
     version: 8.4.0
 direct_dependencies:

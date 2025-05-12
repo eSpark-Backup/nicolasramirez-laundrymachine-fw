@@ -216,6 +216,14 @@ LV_FONT_DECLARE(lv_font_montserrat_46)
 LV_FONT_DECLARE(lv_font_montserrat_48)
 #endif
 
+#if LV_FONT_MONTSERRAT_60
+LV_FONT_DECLARE(lv_font_montserrat_60)
+#endif
+
+#if LV_FONT_MONTSERRAT_100
+LV_FONT_DECLARE(lv_font_montserrat_100)
+#endif
+
 #if LV_FONT_MONTSERRAT_12_SUBPX
 LV_FONT_DECLARE(lv_font_montserrat_12_subpx)
 #endif

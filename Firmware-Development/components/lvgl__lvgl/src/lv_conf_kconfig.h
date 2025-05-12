@@ -140,6 +140,10 @@ extern "C" {
 #  define CONFIG_LV_FONT_DEFAULT &lv_font_montserrat_46
 #elif defined(CONFIG_LV_FONT_DEFAULT_MONTSERRAT_48)
 #  define CONFIG_LV_FONT_DEFAULT &lv_font_montserrat_48
+#elif defined(CONFIG_LV_FONT_DEFAULT_MONTSERRAT_60)
+#  define CONFIG_LV_FONT_DEFAULT &lv_font_montserrat_60
+#elif defined(CONFIG_LV_FONT_DEFAULT_MONTSERRAT_100)
+#  define CONFIG_LV_FONT_DEFAULT &lv_font_montserrat_100
 #elif defined(CONFIG_LV_FONT_DEFAULT_MONTSERRAT_12_SUBPX)
 #  define CONFIG_LV_FONT_DEFAULT &lv_font_montserrat_12_subpx
 #elif defined(CONFIG_LV_FONT_DEFAULT_MONTSERRAT_28_COMPRESSED)

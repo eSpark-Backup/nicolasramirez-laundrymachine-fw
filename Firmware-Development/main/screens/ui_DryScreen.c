@@ -335,14 +335,13 @@ void ui_DryScreen_screen_init(void)
     ui_JDCycleTimeLbl = lv_label_create(ui_JDTimeCntr);
     lv_obj_set_width(ui_JDCycleTimeLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_JDCycleTimeLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_JDCycleTimeLbl, -47);
-    lv_obj_set_y(ui_JDCycleTimeLbl, 9);
+    lv_obj_set_x(ui_JDCycleTimeLbl, -37);
+    lv_obj_set_y(ui_JDCycleTimeLbl, 16);
     lv_obj_set_align(ui_JDCycleTimeLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_JDCycleTimeLbl, "115");
     lv_obj_set_style_text_color(ui_JDCycleTimeLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_JDCycleTimeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_JDCycleTimeLbl, &lv_font_montserrat_46, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_zoom(ui_JDCycleTimeLbl, 330, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_JDCycleTimeLbl, &lv_font_montserrat_60, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Image4 = lv_img_create(ui_JDTimeCntr);
     lv_img_set_src(ui_Image4, &ui_img_clockicon_png);
@@ -358,7 +357,7 @@ void ui_DryScreen_screen_init(void)
     lv_obj_add_event_cb(ui_FullDryPanel, ui_event_FullDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_SpinDryPanel, ui_event_SpinDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustDryStartBtn, ui_event_JustDryStartBtn, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backJDLbl, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backJDLbl, ui_event_backJWImg, LV_EVENT_ALL, &ui_HomeScreen);
     lv_obj_add_event_cb(ui_infoJDImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

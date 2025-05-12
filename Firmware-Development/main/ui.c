@@ -402,7 +402,7 @@ void change_to_washDry_detail_screen()
     lv_label_set_text_fmt(ui_DrySelBtmLbl,  "%s", subTitleDry);
     lv_label_set_text_fmt(ui_DrySelTimeLbl, "%d", drySelTime);
     lv_label_set_text_fmt(ui_cycleTimeLbl1, "%d", washSelTime + drySelTime);
-    last_uiScreen = lv_disp_get_scr_act(NULL);
+    last_uiScreen = lv_scr_act();
     _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
 }
 
@@ -442,7 +442,7 @@ void ui_event_infoEvent(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = lv_scr_act();
         _ui_screen_change(&ui_infoScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_infoScreen_screen_init);
     }
 }
@@ -672,7 +672,7 @@ void ui_event_JustWashStartBtn1(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = lv_scr_act();
         lv_label_set_text_fmt(ui_timeRemainLbl, "%d", washSelTime + drySelTime);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
         createCountdownTimer(washSelTime + drySelTime);
@@ -726,7 +726,11 @@ void ui_event_backJWImg(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        _ui_screen_change(&last_uiScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
+        lv_obj_t **target_screen = (lv_obj_t **)lv_event_get_user_data(e);
+        if(target_screen != NULL && *target_screen != NULL)
+            _ui_screen_change(target_screen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
+        else
+            _ui_screen_change(&last_uiScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
     }
 }
 
@@ -735,7 +739,7 @@ void ui_event_JustWashStartBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = lv_scr_act();
         lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
         createCountdownTimer(cycleTimerClock);
@@ -789,7 +793,7 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_PRESSED) {
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = lv_scr_act();
         lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock + 35);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
         createCountdownTimer(cycleTimerClock);

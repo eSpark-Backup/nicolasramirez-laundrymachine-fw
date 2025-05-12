@@ -296,8 +296,7 @@ void ui_WashDryDetailScreen_screen_init(void)
     lv_label_set_text(ui_cycleTimeLbl1, "90");
     lv_obj_set_style_text_color(ui_cycleTimeLbl1, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_cycleTimeLbl1, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_cycleTimeLbl1, &lv_font_montserrat_46, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_zoom(ui_cycleTimeLbl1, 330, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_cycleTimeLbl1, &lv_font_montserrat_60, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Image8 = lv_img_create(ui_TimeCntr1);
     lv_img_set_src(ui_Image8, &ui_img_clockicon_png);
@@ -336,7 +335,7 @@ void ui_WashDryDetailScreen_screen_init(void)
     lv_obj_add_event_cb(ui_WashSelBtn, ui_event_WashSelBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DrySelBtn, ui_event_DrySelBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustWashStartBtn1, ui_event_JustWashStartBtn1, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backLbl1, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backLbl1, ui_event_backJWImg, LV_EVENT_ALL, &ui_WashDryScreen);
     lv_obj_add_event_cb(ui_infoJWImg1, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

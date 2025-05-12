@@ -65,6 +65,12 @@ os.system("./built_in_font_gen.py --size 46 -o lv_font_montserrat_46.c --bpp 4")
 print("\nGenerating 48 px")
 os.system("./built_in_font_gen.py --size 48 -o lv_font_montserrat_48.c --bpp 4")
 
+print("\nGenerating 60 px")
+os.system("./built_in_font_gen.py --size 60 -o lv_font_montserrat_60.c --bpp 4")
+
+print("\nGenerating 100 px")
+os.system("./built_in_font_gen.py --size 100 -o lv_font_montserrat_100.c --bpp 4")
+
 print("\nGenerating 12 px subpx")
 os.system("./built_in_font_gen.py --size 12 -o lv_font_montserrat_12_subpx.c --bpp 4 --subpx")
 

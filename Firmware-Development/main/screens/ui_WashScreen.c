@@ -301,7 +301,7 @@ void ui_WashScreen_screen_init(void)
     ui_cycleMinLbl = lv_label_create(ui_TimeCntr);
     lv_obj_set_width(ui_cycleMinLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_cycleMinLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_cycleMinLbl, 74);
+    lv_obj_set_x(ui_cycleMinLbl, 72);
     lv_obj_set_y(ui_cycleMinLbl, 31);
     lv_obj_set_align(ui_cycleMinLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_cycleMinLbl, "min");
@@ -312,14 +312,13 @@ void ui_WashScreen_screen_init(void)
     ui_cycleTimeLbl = lv_label_create(ui_TimeCntr);
     lv_obj_set_width(ui_cycleTimeLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_cycleTimeLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_cycleTimeLbl, -2);
-    lv_obj_set_y(ui_cycleTimeLbl, 8);
+    lv_obj_set_x(ui_cycleTimeLbl, 9);
+    lv_obj_set_y(ui_cycleTimeLbl, 18);
     lv_obj_set_align(ui_cycleTimeLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_cycleTimeLbl, "15");
     lv_obj_set_style_text_color(ui_cycleTimeLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_cycleTimeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_text_font(ui_cycleTimeLbl, &lv_font_montserrat_46, LV_PART_MAIN | LV_STATE_DEFAULT);
-    lv_obj_set_style_transform_zoom(ui_cycleTimeLbl, 330, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_cycleTimeLbl, &lv_font_montserrat_60, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_Image6 = lv_img_create(ui_TimeCntr);
     lv_img_set_src(ui_Image6, &ui_img_clockicon_png);
@@ -334,7 +333,7 @@ void ui_WashScreen_screen_init(void)
     lv_obj_add_event_cb(ui_NormalWashPanel, ui_event_NormalWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_IntenseWashPanel, ui_event_IntenseWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DelicateWashPanel, ui_event_DelicateWashPanel, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backLbl, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backLbl, ui_event_backJWImg, LV_EVENT_ALL, &ui_HomeScreen);
     lv_obj_add_event_cb(ui_JustWashStartBtn, ui_event_JustWashStartBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_infoJWImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
