@@ -147,7 +147,7 @@ void ui_TimerStartScreen_screen_init(void)
 
     ui_TimerScrCntr = lv_obj_create(ui_TimerStartScreen);
     lv_obj_remove_style_all(ui_TimerScrCntr);
-    lv_obj_set_width(ui_TimerScrCntr, 302);
+    lv_obj_set_width(ui_TimerScrCntr, 321);
     lv_obj_set_height(ui_TimerScrCntr, 140);
     lv_obj_set_x(ui_TimerScrCntr, 0);
     lv_obj_set_y(ui_TimerScrCntr, -17);
@@ -157,7 +157,7 @@ void ui_TimerStartScreen_screen_init(void)
     ui_tmrMinLbl = lv_label_create(ui_TimerScrCntr);
     lv_obj_set_width(ui_tmrMinLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_tmrMinLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_tmrMinLbl, 115);
+    lv_obj_set_x(ui_tmrMinLbl, 130);
     lv_obj_set_y(ui_tmrMinLbl, 32);
     lv_obj_set_align(ui_tmrMinLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_tmrMinLbl, "min");
@@ -168,8 +168,8 @@ void ui_TimerStartScreen_screen_init(void)
     ui_timeRemainLbl = lv_label_create(ui_TimerScrCntr);
     lv_obj_set_width(ui_timeRemainLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_timeRemainLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_timeRemainLbl, 20);
-    lv_obj_set_y(ui_timeRemainLbl, 10);
+    lv_obj_set_x(ui_timeRemainLbl, 24);
+    lv_obj_set_y(ui_timeRemainLbl, 9);
     lv_obj_set_align(ui_timeRemainLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_timeRemainLbl, "15");
     lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -180,7 +180,7 @@ void ui_TimerStartScreen_screen_init(void)
     lv_img_set_src(ui_timerImg, &ui_img_alarmclock_png);
     lv_obj_set_width(ui_timerImg, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_timerImg, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_timerImg, -93);
+    lv_obj_set_x(ui_timerImg, -108);
     lv_obj_set_y(ui_timerImg, -1);
     lv_obj_set_align(ui_timerImg, LV_ALIGN_CENTER);
     lv_obj_add_flag(ui_timerImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
