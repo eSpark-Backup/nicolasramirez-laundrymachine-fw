@@ -48,6 +48,7 @@ void ui_WashDryScreen_screen_init(void)
     lv_obj_set_y(ui_backWDLbl, 0);
     lv_obj_set_align(ui_backWDLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_backWDLbl, "Back");
+    lv_obj_add_flag(ui_backWDLbl, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_set_style_text_color(ui_backWDLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_backWDLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_backWDLbl, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -59,7 +60,7 @@ void ui_WashDryScreen_screen_init(void)
     lv_obj_set_x(ui_infoWDImg, 365);
     lv_obj_set_y(ui_infoWDImg, 0);
     lv_obj_set_align(ui_infoWDImg, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_infoWDImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_add_flag(ui_infoWDImg, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_clear_flag(ui_infoWDImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_washContainer = lv_obj_create(ui_WashDryScreen);
@@ -460,7 +461,7 @@ void ui_WashDryScreen_screen_init(void)
     lv_obj_add_event_cb(ui_halfDrumPanel, ui_event_halfDrumPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_fullDrumPanel, ui_event_fullDrumPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_noHeatPanel, ui_event_noHeatPanel, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backWDImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backWDLbl, ui_event_backJWImg, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_infoWDImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

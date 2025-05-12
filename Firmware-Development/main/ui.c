@@ -5,6 +5,7 @@
 
 #include "ui.h"
 #include "ui_helpers.h"
+#include "esp_log.h"
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -455,7 +456,7 @@ void ui_event_homeWashPanel(lv_event_t * e)
         _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justWashLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = ui_HomeScreen;
         _ui_screen_change(&ui_WashScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashScreen_screen_init);
     }
 }
@@ -470,7 +471,7 @@ void ui_event_WashDryPanel(lv_event_t * e)
         _ui_state_modify(ui_smallWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_smallDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_washDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = lv_disp_get_scr_act(NULL);
+        last_uiScreen = ui_HomeScreen;
         _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
     }
 }
@@ -484,8 +485,8 @@ void ui_event_homeDryPanel(lv_event_t * e)
         _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
         _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = lv_disp_get_scr_act(NULL);
-        _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_DryScreen_screen_init);
+        last_uiScreen = ui_HomeScreen;
+        _ui_screen_change(&ui_DryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_DryScreen_screen_init);
     }
 }
 

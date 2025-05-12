@@ -216,6 +216,7 @@ void ui_DryScreen_screen_init(void)
     lv_obj_set_y(ui_backJDLbl, 0);
     lv_obj_set_align(ui_backJDLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_backJDLbl, "Back");
+    lv_obj_add_flag(ui_backJDLbl, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_set_style_text_color(ui_backJDLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_backJDLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_backJDLbl, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -227,7 +228,7 @@ void ui_DryScreen_screen_init(void)
     lv_obj_set_x(ui_infoJDImg, 365);
     lv_obj_set_y(ui_infoJDImg, 0);
     lv_obj_set_align(ui_infoJDImg, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_infoJDImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_add_flag(ui_infoJDImg, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_clear_flag(ui_infoJDImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_customizeJustDryLbl = lv_label_create(ui_DryScreen);
@@ -323,7 +324,7 @@ void ui_DryScreen_screen_init(void)
     ui_JDCycleMinLbl = lv_label_create(ui_JDTimeCntr);
     lv_obj_set_width(ui_JDCycleMinLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_JDCycleMinLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_JDCycleMinLbl, 27);
+    lv_obj_set_x(ui_JDCycleMinLbl, 29);
     lv_obj_set_y(ui_JDCycleMinLbl, 31);
     lv_obj_set_align(ui_JDCycleMinLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_JDCycleMinLbl, "min");
@@ -357,7 +358,7 @@ void ui_DryScreen_screen_init(void)
     lv_obj_add_event_cb(ui_FullDryPanel, ui_event_FullDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_SpinDryPanel, ui_event_SpinDryPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustDryStartBtn, ui_event_JustDryStartBtn, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backJDImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backJDLbl, ui_event_backJWImg, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_infoJDImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 
 }

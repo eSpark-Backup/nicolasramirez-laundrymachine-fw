@@ -204,6 +204,7 @@ void ui_WashScreen_screen_init(void)
     lv_obj_set_y(ui_backLbl, 0);
     lv_obj_set_align(ui_backLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_backLbl, "Back");
+    lv_obj_add_flag(ui_backLbl, LV_OBJ_FLAG_CLICKABLE);
     lv_obj_set_style_text_color(ui_backLbl, lv_color_hex(0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_opa(ui_backLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_backLbl, &lv_font_montserrat_16, LV_PART_MAIN | LV_STATE_DEFAULT);
@@ -215,7 +216,7 @@ void ui_WashScreen_screen_init(void)
     lv_obj_set_x(ui_infoJWImg, 365);
     lv_obj_set_y(ui_infoJWImg, 0);
     lv_obj_set_align(ui_infoJWImg, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_infoJWImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_add_flag(ui_infoJWImg, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_clear_flag(ui_infoJWImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_customizeJustWashLbl = lv_label_create(ui_WashScreen);
@@ -333,7 +334,7 @@ void ui_WashScreen_screen_init(void)
     lv_obj_add_event_cb(ui_NormalWashPanel, ui_event_NormalWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_IntenseWashPanel, ui_event_IntenseWashPanel, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_DelicateWashPanel, ui_event_DelicateWashPanel, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_backJWImg, ui_event_backJWImg, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_backLbl, ui_event_backJWImg, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_JustWashStartBtn, ui_event_JustWashStartBtn, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_infoJWImg, ui_event_infoEvent, LV_EVENT_ALL, NULL);
 

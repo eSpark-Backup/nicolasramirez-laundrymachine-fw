@@ -48,7 +48,7 @@ void ui_TimerStartScreen_screen_init(void)
     lv_obj_set_x(ui_infoTRImg, 365);
     lv_obj_set_y(ui_infoTRImg, 0);
     lv_obj_set_align(ui_infoTRImg, LV_ALIGN_CENTER);
-    lv_obj_add_flag(ui_infoTRImg, LV_OBJ_FLAG_ADV_HITTEST);     /// Flags
+    lv_obj_add_flag(ui_infoTRImg, LV_OBJ_FLAG_CLICKABLE);     /// Flags
     lv_obj_clear_flag(ui_infoTRImg, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
     ui_mainTimeRemainLbl = lv_label_create(ui_TimerStartScreen);
