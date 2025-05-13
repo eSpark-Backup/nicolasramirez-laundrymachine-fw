@@ -8,6 +8,9 @@
 #include "esp_log.h"
 #include "esp_system.h"
 #include "esp_heap_caps.h"
+#include "freertos/FreeRTOS.h"
+#include "freertos/task.h"
+#include <inttypes.h>
 
 ///////////////////// VARIABLES ////////////////////
 
@@ -285,6 +288,11 @@ lv_obj_t * ui____initial_actions0;
 
 ///////////////////// CUSTOM VARIABLES ////////////////////
 const char *TAG = "UI";
+
+#define _TIME_MS    (xTaskGetTickCount() * portTICK_PERIOD_MS)
+#define _TIME_S     (_TIME_MS / 1000)
+
+
 typedef enum
 {
     WASH_DRY_NONE,
@@ -303,7 +311,8 @@ int drySelTime = 0;
 
 lv_obj_t * last_uiScreen;
 lv_timer_t *countdown_timer = NULL;
-int startTime;
+uint32_t startTime, lastSec;
+int secRemain = 60;
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void memLog()
@@ -436,6 +445,7 @@ void change_to_washDry_detail_screen()
 void deleteCountdownTimer()
 {
     if (countdown_timer) {
+        ESP_LOGI(TAG, "Timer Deleted");
         lv_timer_del(countdown_timer);
         countdown_timer = NULL;
     }
@@ -443,14 +453,29 @@ void deleteCountdownTimer()
 
 void updateTimer(lv_timer_t * timer)
 {
-    if (startTime > 0) {
-        startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
-        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", startTime);
-    } else {
-        // Countdown complete — stop the timer
-        deleteCountdownTimer();
-        lv_label_set_text(ui_timeRemainLbl, "0");
-        _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
+    if(_TIME_S - lastSec >= secRemain)
+    {        
+        if (startTime > 0) {
+            startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
+            lv_label_set_text_fmt(ui_timeRemainLbl, "%" PRIu32, startTime);
+            ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
+            lastSec = _TIME_S;
+            secRemain = 60;
+            if(startTime == 0)
+            {
+                // Countdown complete — stop the timer
+                deleteCountdownTimer();
+                lv_label_set_text(ui_timeRemainLbl, "0");
+                _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
+            }
+        }
+    }
+    else
+    {
+        static bool color_brown = true;
+        lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
+        color_brown = !color_brown;
+        return;
     }
 }
 
@@ -459,7 +484,9 @@ void createCountdownTimer(int timeInMin)
     deleteCountdownTimer();
     if (!countdown_timer) {  // Avoid multiple timers
         startTime = timeInMin;
-        countdown_timer = lv_timer_create(updateTimer, 1000*60, NULL);
+        lastSec = _TIME_S;
+        ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
+        countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
     }
 }
 
@@ -526,13 +553,17 @@ void ui_event_WashTimerPauseBtn(lv_event_t * e)
         _ui_state_modify(ui_pauseBtnLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_state_modify(ui_WashTimerPauseBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
         _ui_checked_set_text_value(ui_pauseBtnLbl, target, "Resume", "Pause");
-        // if (countdown_timer && lv_obj_has_state(target, LV_STATE_CHECKED)) {
-        //     lv_timer_pause(countdown_timer);
-        // }
-        // else
-        // {
-        //     lv_timer_resume(countdown_timer);
-        // }
+        if (countdown_timer && lv_obj_has_state(target, LV_STATE_CHECKED)) {
+            lv_timer_pause(countdown_timer);
+            ESP_LOGI(TAG, "Timer Paused");
+            secRemain = _TIME_S - lastSec;
+        }
+        else
+        {
+            lv_timer_resume(countdown_timer);
+            lastSec = _TIME_S;
+            ESP_LOGI(TAG, "Timer Resumed");
+        }
     }
 }
 
@@ -542,7 +573,7 @@ void ui_event_JustWashEndBtn(lv_event_t * e)
 
     if(event_code == LV_EVENT_CLICKED) {
         _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
-        // deleteCountdownTimer();
+        deleteCountdownTimer();
     }
 }
 
@@ -726,7 +757,7 @@ void ui_event_JustWashStartBtn1(lv_event_t * e)
         clear_all_washdryScreen_washPanels(&toggle);
         clear_all_washdryScreen_dryPanels(&toggle);
         selection = WASH_DRY_NONE;
-        // createCountdownTimer(washSelTime + drySelTime);
+        createCountdownTimer(washSelTime + drySelTime);
     }
 }
 
@@ -804,7 +835,7 @@ void ui_event_JustWashStartBtn(lv_event_t * e)
         last_uiScreen = lv_scr_act();
         lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
-        // createCountdownTimer(cycleTimerClock);
+        createCountdownTimer(cycleTimerClock);
     }
 }
 
@@ -858,7 +889,7 @@ void ui_event_JustDryStartBtn(lv_event_t * e)
         last_uiScreen = lv_scr_act();
         lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock + 35);
         _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
-        // createCountdownTimer(cycleTimerClock);
+        createCountdownTimer(cycleTimerClock + 35);
     }
 }
 
