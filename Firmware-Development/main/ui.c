@@ -14,260 +14,112 @@
 
 ///////////////////// VARIABLES ////////////////////
 
-// SCREEN: ui_HomeScreen
-void ui_HomeScreen_screen_init(void);
-lv_obj_t * ui_HomeScreen;
-void ui_event_homeWashPanel(lv_event_t * e);
-lv_obj_t * ui_homeWashPanel;
-lv_obj_t * ui_justWashImg;
-lv_obj_t * ui_justWashLbl;
-void ui_event_WashDryPanel(lv_event_t * e);
-lv_obj_t * ui_WashDryPanel;
-lv_obj_t * ui_smallWashImg;
-lv_obj_t * ui_smallDryImg;
-lv_obj_t * ui_washDryLbl;
-void ui_event_homeDryPanel(lv_event_t * e);
-lv_obj_t * ui_homeDryPanel;
-lv_obj_t * ui_justDryImg;
-lv_obj_t * ui_justDryLbl;
-lv_obj_t * ui_homeTopCntr;
-lv_obj_t * ui_eevaLogoImg;
-lv_obj_t * ui_settingsImg;
-lv_obj_t * ui_settingsImg1;
-lv_obj_t * ui_homeMainLbl;
-lv_obj_t * ui_homeDescLbl;
-lv_obj_t * ui_homeBtmDescLbl;
+
+// SCREEN: ui_Home
+void ui_Home_screen_init(void);
+void ui_Home_screen_destroy(void);
+lv_obj_t * ui_Home;
+lv_obj_t * ui_HomeImg;
+void ui_event_HomeWashDry(lv_event_t * e);
+lv_obj_t * ui_HomeWashDry;
+lv_obj_t * ui_HomeJustWash;
+lv_obj_t * ui_HomeJustDry;
+lv_obj_t * ui_HomeSettings;
+lv_obj_t * ui_HomeInfo;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_TimerStartScreen
-void ui_TimerStartScreen_screen_init(void);
-lv_obj_t * ui_TimerStartScreen;
-lv_obj_t * ui_timeRemainTopCntr;
-lv_obj_t * ui_eevaTRLogoImg;
-lv_obj_t * ui_backTRImg;
-lv_obj_t * ui_infoTRImg;
-lv_obj_t * ui_mainTimeRemainLbl;
-lv_obj_t * ui_TimeRemainBtmLbl;
-lv_obj_t * ui_TRBtmDescLbl;
-void ui_event_WashTimerPauseBtn(lv_event_t * e);
-lv_obj_t * ui_WashTimerPauseBtn;
-lv_obj_t * ui_pauseBtnLbl;
-void ui_event_JustWashEndBtn(lv_event_t * e);
-lv_obj_t * ui_JustWashEndBtn;
-lv_obj_t * ui_endBtnLbl;
-lv_obj_t * ui_TimerScrCntr;
-lv_obj_t * ui_tmrMinLbl;
-lv_obj_t * ui_timeRemainLbl;
-lv_obj_t * ui_timerImg;
+// SCREEN: ui_WashDryLoad
+void ui_WashDryLoad_screen_init(void);
+void ui_WashDryLoad_screen_destroy(void);
+lv_obj_t * ui_WashDryLoad;
+lv_obj_t * ui_WashDryLoadModeImg;
+lv_obj_t * ui_WdMedLoad;
+lv_obj_t * ui_WdFullLoad;
+lv_obj_t * ui_WdLoadInfo;
+lv_obj_t * ui_WdLoadSettings;
+void ui_event_WdSelWashModeV1(lv_event_t * e);
+lv_obj_t * ui_WdSelWashModeV1;
+lv_obj_t * ui_WdSelLoadModeV1;
+void ui_event_WdSelDryModeV1(lv_event_t * e);
+lv_obj_t * ui_WdSelDryModeV1;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_LastSuccessScreen
-void ui_LastSuccessScreen_screen_init(void);
-lv_obj_t * ui_LastSuccessScreen;
-lv_obj_t * ui_Image1;
-lv_obj_t * ui_successTopCntr;
-lv_obj_t * ui_eevaJSuccessLogoImg;
-lv_obj_t * ui_backSuccessImg;
-lv_obj_t * ui_HomePgLbl;
-lv_obj_t * ui_infoSuccessImg;
-void ui_event_lastScrPanel(lv_event_t * e);
-lv_obj_t * ui_lastScrPanel;
-lv_obj_t * ui_WaterSavedFrame;
-lv_obj_t * ui_CarbonHomentingFrame;
-lv_obj_t * ui_EnergySavedFrame;
-lv_obj_t * ui_SuccessBtmDescLbl;
-lv_obj_t * ui_SuccessEndLbl;
-lv_obj_t * ui_SuccessBtmLbl;
-lv_obj_t * ui_SuccessMainLbl;
+// SCREEN: ui_WashDryWash
+void ui_WashDryWash_screen_init(void);
+void ui_WashDryWash_screen_destroy(void);
+lv_obj_t * ui_WashDryWash;
+lv_obj_t * ui_WashDryWashModeImg;
+lv_obj_t * ui_WdStandClean;
+lv_obj_t * ui_WdIntenseClean;
+lv_obj_t * ui_WdDelicateClean;
+lv_obj_t * ui_WdWashInfo;
+lv_obj_t * ui_WdWashSettings;
+lv_obj_t * ui_WdSelWashModeV2;
+void ui_event_WdSelLoadModeV2(lv_event_t * e);
+lv_obj_t * ui_WdSelLoadModeV2;
+lv_obj_t * ui_WdSelDryModeV2;
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashDryScreen
-void ui_WashDryScreen_screen_init(void);
-lv_obj_t * ui_WashDryScreen;
-lv_obj_t * ui_WashDryTopCntr;
-lv_obj_t * ui_eevaWDLogoImg;
-lv_obj_t * ui_backWDImg;
-lv_obj_t * ui_backWDLbl;
-lv_obj_t * ui_infoWDImg;
-lv_obj_t * ui_washContainer;
-lv_obj_t * ui_WashCntrLbl;
-void ui_event_NorWashDryPanel(lv_event_t * e);
-lv_obj_t * ui_norWashDryPanel;
-lv_obj_t * ui_norWashDryLbl;
-lv_obj_t * ui_norWashDryBtmLbl;
-lv_obj_t * ui_norWashDryTimeLbl;
-void ui_event_intWashDryPanel(lv_event_t * e);
-lv_obj_t * ui_intWashDryPanel;
-lv_obj_t * ui_intWashDryLbl;
-lv_obj_t * ui_intWashDryBtmLbl;
-lv_obj_t * ui_intWashDryTimeLbl;
-void ui_event_delWashDryPanel(lv_event_t * e);
-lv_obj_t * ui_delWashDryPanel;
-lv_obj_t * ui_delWashDryLbl;
-lv_obj_t * ui_delWashDryBtmLbl;
-lv_obj_t * ui_delWashDryTimeLbl;
-lv_obj_t * ui_customizeWashDryLbl;
-lv_obj_t * ui_WDBtmDescLbl;
-lv_obj_t * ui_DryContainer;
-lv_obj_t * ui_DryCntrLbl;
-void ui_event_halfDrumPanel(lv_event_t * e);
-lv_obj_t * ui_halfDrumPanel;
-lv_obj_t * ui_halfDrumLbl;
-lv_obj_t * ui_halfDrumBtmLbl;
-lv_obj_t * ui_halfDrumTimeLbl;
-void ui_event_fullDrumPanel(lv_event_t * e);
-lv_obj_t * ui_fullDrumPanel;
-lv_obj_t * ui_fullDrumLbl;
-lv_obj_t * ui_fullDrumBtmLbl;
-lv_obj_t * ui_fullDrumTimeLbl;
-void ui_event_noHeatPanel(lv_event_t * e);
-lv_obj_t * ui_noHeatPanel;
-lv_obj_t * ui_noHeatLbl;
-lv_obj_t * ui_noHeatBtmLbl;
-lv_obj_t * ui_noHeatTimeLbl;
+// SCREEN: ui_WashDryDry
+void ui_WashDryDry_screen_init(void);
+void ui_WashDryDry_screen_destroy(void);
+lv_obj_t * ui_WashDryDry;
+lv_obj_t * ui_WashDryDryModeImg;
+lv_obj_t * ui_WdFastest;
+lv_obj_t * ui_WdEcoMode;
+lv_obj_t * ui_WdDelicates;
+lv_obj_t * ui_WdQuietest;
+lv_obj_t * ui_WdDryInfo;
+lv_obj_t * ui_WdDrySettings;
+lv_obj_t * ui_WdSelWashModeV3;
+lv_obj_t * ui_WdSelLoadModeV3;
+lv_obj_t * ui_WdSelDryModeV3;
+void ui_event_WdSelDryModeV2(lv_event_t * e);
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashDryDetailScreen
-void ui_WashDryDetailScreen_screen_init(void);
-lv_obj_t * ui_WashDryDetailScreen;
-lv_obj_t * ui_WashSelPanel;
-lv_obj_t * ui_WashSelLbl;
-lv_obj_t * ui_WashSelBtmLbl;
-lv_obj_t * ui_WashSelTimeLbl;
-lv_obj_t * ui_WashSettingLbl;
-void ui_event_WashSelBtn(lv_event_t * e);
-lv_obj_t * ui_WashSelBtn;
-lv_obj_t * ui_WashSelBtnLbl;
-lv_obj_t * ui_DrySelPanel;
-lv_obj_t * ui_DrySelLbl;
-lv_obj_t * ui_DrySelBtmLbl;
-lv_obj_t * ui_DrySelTimeLbl;
-lv_obj_t * ui_DrySettingLbl;
-void ui_event_DrySelBtn(lv_event_t * e);
-lv_obj_t * ui_DrySelBtn;
-lv_obj_t * ui_WashSelBtnLbl1;
-lv_obj_t * ui_justWashTopCntr1;
-lv_obj_t * ui_eevaJWLogoImg1;
-lv_obj_t * ui_backJWImg1;
-lv_obj_t * ui_backLbl1;
-lv_obj_t * ui_infoJWImg1;
-lv_obj_t * ui_JWBtmDescLbl1;
-void ui_event_JustWashStartBtn1(lv_event_t * e);
-lv_obj_t * ui_JustWashStartBtn1;
-lv_obj_t * ui_startLbl1;
-lv_obj_t * ui_TimeCntr1;
-lv_obj_t * ui_totCycTimeLbl1;
-lv_obj_t * ui_cycleMinLbl1;
-lv_obj_t * ui_cycleTimeLbl1;
-lv_obj_t * ui_Image8;
-lv_obj_t * ui_mainTimeRemainLbl2;
-lv_obj_t * ui_TimeRemainBtmLbl2;
+// SCREEN: ui_WDConfirmation
+void ui_WDConfirmation_screen_init(void);
+void ui_WDConfirmation_screen_destroy(void);
+lv_obj_t * ui_WDConfirmation;
+lv_obj_t * ui_WDbgImg;
+lv_obj_t * ui_LoadSizeSel;
+lv_obj_t * ui_WashModeSel;
+lv_obj_t * ui_DryModeSel;
+lv_obj_t * ui_cycTimeCntr;
+lv_obj_t * ui_WDhrMinLbl;
+lv_obj_t * ui_WDminLbl;
+lv_obj_t * ui_WDhrLbl;
+lv_obj_t * ui_cycWDStartBtn;
+void ui_event_WdStartCount(lv_event_t * e);
 // CUSTOM VARIABLES
 
-// SCREEN: ui_WashScreen
-void ui_WashScreen_screen_init(void);
-lv_obj_t * ui_WashScreen;
-void ui_event_NormalWashPanel(lv_event_t * e);
-lv_obj_t * ui_NormalWashPanel;
-lv_obj_t * ui_normalLbl;
-lv_obj_t * ui_normalBtmLbl;
-lv_obj_t * ui_normalTimeLbl;
-void ui_event_IntenseWashPanel(lv_event_t * e);
-lv_obj_t * ui_IntenseWashPanel;
-lv_obj_t * ui_intenseLbl;
-lv_obj_t * ui_intenseBtmLbl;
-lv_obj_t * ui_intenseTimeLbl;
-void ui_event_DelicateWashPanel(lv_event_t * e);
-lv_obj_t * ui_DelicateWashPanel;
-lv_obj_t * ui_delicateLbl;
-lv_obj_t * ui_delicateBtmLbl;
-lv_obj_t * ui_delicateTimeLbl;
-lv_obj_t * ui_justWashTopCntr;
-lv_obj_t * ui_eevaJWLogoImg;
-void ui_event_backJWImg(lv_event_t * e);
-lv_obj_t * ui_backJWImg;
-lv_obj_t * ui_backLbl;
-lv_obj_t * ui_infoJWImg;
-lv_obj_t * ui_customizeJustWashLbl;
-lv_obj_t * ui_WashSettingsLbl;
-lv_obj_t * ui_JWBtmDescLbl;
-void ui_event_JustWashStartBtn(lv_event_t * e);
-lv_obj_t * ui_JustWashStartBtn;
-lv_obj_t * ui_startLbl;
-lv_obj_t * ui_TimeCntr;
-lv_obj_t * ui_totCycTimeLbl;
-lv_obj_t * ui_cycleMinLbl;
-lv_obj_t * ui_cycleTimeLbl;
-lv_obj_t * ui_Image6;
-int cycleTimerClock = 15;
+// SCREEN: ui_CycleProgress
+void ui_CycleProgress_screen_init(void);
+void ui_CycleProgress_screen_destroy(void);
+lv_obj_t * ui_CycleProgress;
+lv_obj_t * ui_cycProgBgImg;
+lv_obj_t * ui_cycProgCntr;
+lv_obj_t * ui_cycProghrMinLbl;
+lv_obj_t * ui_cycProgminLbl;
+lv_obj_t * ui_cycProghrLbl;
+lv_obj_t * ui_cycProgCurrentLabel;
+lv_obj_t * ui_DryBar;
+lv_obj_t * ui_DryBarLbl;
+lv_obj_t * ui_SpinBar;
+lv_obj_t * ui_SpinBarLbl;
+lv_obj_t * ui_pauseCntr;
+lv_obj_t * ui_pauseLabel;
+lv_obj_t * ui_endCntr;
+void ui_event_ProgressCounter(lv_event_t * e);
 // CUSTOM VARIABLES
 
-// SCREEN: ui_DryScreen
-void ui_DryScreen_screen_init(void);
-lv_obj_t * ui_DryScreen;
-void ui_event_SmallDryPanel(lv_event_t * e);
-lv_obj_t * ui_SmallDryPanel;
-lv_obj_t * ui_smallDryLbl;
-lv_obj_t * ui_smallDryBtmLbl;
-lv_obj_t * ui_smallDryTimeLbl;
-void ui_event_FullDryPanel(lv_event_t * e);
-lv_obj_t * ui_FullDryPanel;
-lv_obj_t * ui_FullDryLbl;
-lv_obj_t * ui_FullDryBtmLbl;
-lv_obj_t * ui_FullDryTimeLbl;
-void ui_event_SpinDryPanel(lv_event_t * e);
-lv_obj_t * ui_SpinDryPanel;
-lv_obj_t * ui_SpinDryLbl;
-lv_obj_t * ui_SpinDryBtmLbl;
-lv_obj_t * ui_SpinDryTimeLbl;
-lv_obj_t * ui_justDryTopCntr;
-lv_obj_t * ui_eevaJDLogoImg;
-lv_obj_t * ui_backJDImg;
-lv_obj_t * ui_backJDLbl;
-lv_obj_t * ui_infoJDImg;
-lv_obj_t * ui_customizeJustDryLbl;
-lv_obj_t * ui_DrySettingsLbl;
-lv_obj_t * ui_JDBtmDescLbl;
-void ui_event_JustDryStartBtn(lv_event_t * e);
-lv_obj_t * ui_JustDryStartBtn;
-lv_obj_t * ui_startJDLbl;
-lv_obj_t * ui_JDTimeCntr;
-lv_obj_t * ui_totJDCycTimeLbl;
-lv_obj_t * ui_addJDCycTimeLbl;
-lv_obj_t * ui_JDCycleMinLbl;
-lv_obj_t * ui_JDCycleTimeLbl;
-lv_obj_t * ui_Image4;
-// CUSTOM VARIABLES
-
-// SCREEN: ui_infoScreen
-void ui_infoScreen_screen_init(void);
-lv_obj_t * ui_infoScreen;
-lv_obj_t * ui_infoFullTankTopCntr;
-lv_obj_t * ui_eevaFTLogoImg;
-lv_obj_t * ui_backFTImg;
-lv_obj_t * ui_infoFTImg;
-lv_obj_t * ui_backJDLbl2;
-lv_obj_t * ui_mainTimeRemainLbl1;
-lv_obj_t * ui_TRBtmDescLbl1;
-lv_obj_t * ui_infoFillTankCntr1;
-lv_obj_t * ui_infoFillTankPanel1;
-lv_obj_t * ui_infoFillTankImg1;
-lv_obj_t * ui_infoFillTankStep1;
-lv_obj_t * ui_infoFillTankCntr2;
-lv_obj_t * ui_infoFillTankPanel2;
-lv_obj_t * ui_infoFillTankImg2;
-lv_obj_t * ui_infoFillTankStep2;
-lv_obj_t * ui_infoFillTankCntr3;
-lv_obj_t * ui_infoFillTankPanel3;
-lv_obj_t * ui_infoFillTankImg3;
-lv_obj_t * ui_infoFillTankStep3;
-void ui_event_BtmETInfoCntr(lv_event_t * e);
-lv_obj_t * ui_BtmETInfoCntr;
-lv_obj_t * ui_infoETImg;
-lv_obj_t * ui_infoETLbl;
-lv_obj_t * ui_BtmETInfoCntr1;
-lv_obj_t * ui_infoETImg1;
-lv_obj_t * ui_infoETLbl1;
+// SCREEN: ui_successFinal
+void ui_successFinal_screen_init(void);
+void ui_successFinal_screen_destroy(void);
+lv_obj_t * ui_successFinal;
+lv_obj_t * ui_successFinalImg;
+lv_obj_t * ui_successCntrTapHpg;
+void ui_event_HomePageReturn(lv_event_t * e);
 // CUSTOM VARIABLES
 
 // EVENTS
@@ -334,114 +186,6 @@ void memLog()
         );    
 }
 
-void clear_all_homeScreen_panels()
-{
-    // Home Wash
-    _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_justWashLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    // Wash Dry
-    _ui_state_modify(ui_WashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_washDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    // Home Dry
-    _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-}
-
-void clear_all_washScreen_panels()
-{
-    // Normal Wash Panel
-    _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_normalLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_normalBtmLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    // Intense Wash Panel
-    _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intenseBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intenseLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    
-    // Delicate Wash Panel
-    _ui_state_modify(ui_DelicateWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delicateLbl,      LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delicateBtmLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-}
-
-void clear_all_dryScreen_panels()
-{
-    // Small Dry Panel
-    _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_smallDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    // Full Dry Panel
-    _ui_state_modify(ui_FullDryPanel,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_FullDryLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    
-    // Spin Dry Panel
-    _ui_state_modify(ui_SpinDryPanel,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_SpinDryLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-}
-
-void clear_all_washdryScreen_washPanels(bool * moved)
-{
-    if(lv_obj_has_state(ui_norWashDryPanel, LV_STATE_CHECKED)
-    || lv_obj_has_state(ui_intWashDryPanel, LV_STATE_CHECKED)
-    || lv_obj_has_state(ui_delWashDryPanel, LV_STATE_CHECKED)
-    ) *moved = true;
-
-    _ui_state_modify(ui_norWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_norWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_norWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    _ui_state_modify(ui_intWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_intWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    _ui_state_modify(ui_delWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delWashDryLbl,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_delWashDryBtmLbl,LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-}
-
-void clear_all_washdryScreen_dryPanels(bool * moved)
-{
-    if(lv_obj_has_state(ui_halfDrumPanel, LV_STATE_CHECKED)
-    || lv_obj_has_state(ui_fullDrumPanel, LV_STATE_CHECKED)
-    || lv_obj_has_state(ui_noHeatPanel, LV_STATE_CHECKED)
-    ) *moved = true;
-
-    _ui_state_modify(ui_halfDrumPanel,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_halfDrumLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_halfDrumBtmLbl,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    _ui_state_modify(ui_fullDrumPanel,   LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_fullDrumBtmLbl,  LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_fullDrumLbl,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-
-    _ui_state_modify(ui_noHeatPanel,     LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_noHeatLbl,       LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-    _ui_state_modify(ui_noHeatBtmLbl,    LV_STATE_CHECKED, _UI_MODIFY_STATE_REMOVE);
-}
-
-void change_to_washDry_detail_screen()
-{
-    lv_label_set_text_fmt(ui_WashSelLbl,    "%s", mainTitleWash);
-    lv_label_set_text_fmt(ui_WashSelBtmLbl, "%s", subTitleWash);
-    lv_label_set_text_fmt(ui_WashSelTimeLbl,"%d", washSelTime);
-    lv_label_set_text_fmt(ui_DrySelLbl,     "%s", mainTitleDry);
-    lv_label_set_text_fmt(ui_DrySelBtmLbl,  "%s", subTitleDry);
-    lv_label_set_text_fmt(ui_DrySelTimeLbl, "%d", drySelTime);
-    lv_label_set_text_fmt(ui_cycleTimeLbl1, "%d", washSelTime + drySelTime);
-    last_uiScreen = lv_scr_act();
-    _ui_screen_change(&ui_WashDryDetailScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDetailScreen_screen_init);
-}
-
 void deleteCountdownTimer()
 {
     if (countdown_timer) {
@@ -451,482 +195,148 @@ void deleteCountdownTimer()
     }
 }
 
-void updateTimer(lv_timer_t * timer)
-{
-    if(_TIME_S - lastSec >= secRemain)
-    {        
-        if (startTime > 0) {
-            startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
-            lv_label_set_text_fmt(ui_timeRemainLbl, "%" PRIu32, startTime);
-            ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
-            lastSec = _TIME_S;
-            secRemain = 60;
-            if(startTime == 0)
-            {
-                // Countdown complete — stop the timer
-                deleteCountdownTimer();
-                lv_label_set_text(ui_timeRemainLbl, "0");
-                _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
-            }
-        }
-    }
-    else
-    {
-        static bool color_brown = true;
-        lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
-        color_brown = !color_brown;
-        return;
-    }
-}
+// void updateTimer(lv_timer_t * timer)
+// {
+//     if(_TIME_S - lastSec >= secRemain)
+//     {        
+//         if (startTime > 0) {
+//             startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
+//             lv_label_set_text_fmt(ui_timeRemainLbl, "%" PRIu32, startTime);
+//             ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
+//             lastSec = _TIME_S;
+//             secRemain = 60;
+//             if(startTime == 0)
+//             {
+//                 // Countdown complete — stop the timer
+//                 deleteCountdownTimer();
+//                 lv_label_set_text(ui_timeRemainLbl, "0");
+//                 _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
+//             }
+//         }
+//     }
+//     else
+//     {
+//         static bool color_brown = true;
+//         lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
+//         color_brown = !color_brown;
+//         return;
+//     }
+// }
 
-void createCountdownTimer(int timeInMin)
-{
-    deleteCountdownTimer();
-    if (!countdown_timer) {  // Avoid multiple timers
-        startTime = timeInMin;
-        lastSec = _TIME_S;
-        ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
-        countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
-    }
-}
+// void createCountdownTimer(int timeInMin)
+// {
+//     deleteCountdownTimer();
+//     if (!countdown_timer) {  // Avoid multiple timers
+//         startTime = timeInMin;
+//         lastSec = _TIME_S;
+//         ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
+//         countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
+//     }
+// }
+
+///////////
+
+//////////
+
+
 
 ///////////////////// FUNCTIONS ////////////////////
-void ui_event_infoEvent(lv_event_t * e)
+
+/// HOME SCREEN
+void ui_event_HomeWashDry(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        last_uiScreen = lv_scr_act();
-        _ui_screen_change(&ui_infoScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_infoScreen_screen_init);
+        _ui_screen_change(&ui_WashDryLoad, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryLoad_screen_init);
     }
 }
 
-void ui_event_homeWashPanel(lv_event_t * e)
+/// WASH DEY LOAD SCREEN
+void ui_event_WdSelWashModeV1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_homeScreen_panels();
-        _ui_state_modify(ui_homeWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_justWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_justWashLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = ui_HomeScreen;
-        _ui_screen_change(&ui_WashScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashScreen_screen_init);
+        _ui_screen_change(&ui_WashDryWash, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryWash_screen_init);
     }
 }
 
-void ui_event_WashDryPanel(lv_event_t * e)
+void ui_event_WdSelDryModeV1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_homeScreen_panels();
-        _ui_state_modify(ui_WashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_smallWashImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_smallDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_washDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = ui_HomeScreen;
-        _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
+        _ui_screen_change(&ui_WashDryDry, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDry_screen_init);
     }
 }
 
-void ui_event_homeDryPanel(lv_event_t * e)
+/// WASH DRY WASH SCREEN
+void ui_event_WdSelLoadModeV2(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_homeScreen_panels();
-        _ui_state_modify(ui_homeDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_justDryImg, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_justDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        last_uiScreen = ui_HomeScreen;
-        _ui_screen_change(&ui_DryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_DryScreen_screen_init);
+        _ui_screen_change(&ui_WashDryDry, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDry_screen_init);
     }
 }
 
-void ui_event_WashTimerPauseBtn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        _ui_state_modify(ui_pauseBtnLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_WashTimerPauseBtn, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_checked_set_text_value(ui_pauseBtnLbl, target, "Resume", "Pause");
-        if (countdown_timer && lv_obj_has_state(target, LV_STATE_CHECKED)) {
-            lv_timer_pause(countdown_timer);
-            ESP_LOGI(TAG, "Timer Paused");
-            secRemain = _TIME_S - lastSec;
-        }
-        else
-        {
-            lv_timer_resume(countdown_timer);
-            lastSec = _TIME_S;
-            ESP_LOGI(TAG, "Timer Resumed");
-        }
-    }
-}
-
-void ui_event_JustWashEndBtn(lv_event_t * e)
+/// WASH DRY DRY SCREEN
+void ui_event_WdSelDryModeV2(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
-        deleteCountdownTimer();
+        _ui_screen_change(&ui_WDConfirmation, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WDConfirmation_screen_init);
     }
 }
 
-void ui_event_lastScrPanel(lv_event_t * e)
+/// WASH DRY CONFIRMATION SCREEN
+void ui_event_WdStartCount(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_homeScreen_panels();
-        _ui_screen_change(&ui_HomeScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_HomeScreen_screen_init);
+        _ui_screen_change(&ui_CycleProgress, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_CycleProgress_screen_init);
     }
 }
 
-void ui_event_NorWashDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_washPanels(&toggle);
-        _ui_state_modify(ui_norWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_norWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_norWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if (selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            washSelTime = 15;
-            strcpy(mainTitleWash, "Normal");
-            strcpy(subTitleWash, "For clothes with little ...");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-}
-
-void ui_event_intWashDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_washPanels(&toggle);
-        _ui_state_modify(ui_intWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_intWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_intWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if (selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            washSelTime = 45;
-            strcpy(mainTitleWash, "Intense");
-            strcpy(subTitleWash, "Stain small to medium load");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-}
-
-void ui_event_delWashDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        if(lv_obj_has_state(ui_delWashDryPanel, LV_STATE_CHECKED)) toggle = true;
-        clear_all_washdryScreen_washPanels(&toggle);
-        _ui_state_modify(ui_delWashDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_delWashDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_delWashDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if (selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            washSelTime = 20;
-            strcpy(mainTitleWash, "Delicates");
-            strcpy(subTitleWash, "Stain for full load ords or other");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-}
-
-void ui_event_halfDrumPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_dryPanels(&toggle);
-        _ui_state_modify(ui_halfDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_halfDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_halfDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if (selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            drySelTime = 75;
-            strcpy(mainTitleDry, "Small to Medium Load");
-            strcpy(subTitleWash, "*Drum is half full or less");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-    // ESP_LOGI(TAG, "selection: %d and DryTime: %d", selection, drySelTime);
-}
-
-void ui_event_fullDrumPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_dryPanels(&toggle);
-        _ui_state_modify(ui_fullDrumPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_fullDrumBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_fullDrumLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if(selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            drySelTime = 120;
-            strcpy(mainTitleDry, "Full Drum");
-            strcpy(subTitleDry, "*Drum is full");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-    // ESP_LOGI(TAG, "selection: %d and DryTime: %d", selection, drySelTime);
-}
-
-void ui_event_noHeatPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_dryPanels(&toggle);
-        _ui_state_modify(ui_noHeatPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_noHeatLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        _ui_state_modify(ui_noHeatBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_TOGGLE);
-        if (selection != BOTH_SELECTED)
-        {
-            if(!toggle) selection++;
-            drySelTime = 10;
-            strcpy(mainTitleDry, "No Heat Dry");
-            strcpy(subTitleDry, "*Use a fraction less energy in exchange\nfor longer dry time");
-        }
-    }
-    if(selection == BOTH_SELECTED) {
-        change_to_washDry_detail_screen();
-    }
-    // ESP_LOGI(TAG, "selection: %d and DryTime: %d", selection, drySelTime);
-}
-
-void ui_event_WashSelBtn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_washPanels(&toggle);
-        if(selection) selection--;
-        _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
-    }
-}
-
-void ui_event_DrySelBtn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washdryScreen_dryPanels(&toggle);
-        if(selection) selection--;
-        _ui_screen_change(&ui_WashDryScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryScreen_screen_init);
-    }
-}
-
-void ui_event_JustWashStartBtn1(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        last_uiScreen = lv_scr_act();
-        int time = washSelTime + drySelTime;
-        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", time);
-        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
-        clear_all_washdryScreen_washPanels(&toggle);
-        clear_all_washdryScreen_dryPanels(&toggle);
-        selection = WASH_DRY_NONE;
-        createCountdownTimer(washSelTime + drySelTime);
-    }
-}
-
-void ui_event_NormalWashPanel(lv_event_t * e)
+/// CYCLE PROGRESS SCREEN
+void ui_event_ProgressCounter(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washScreen_panels();
-        _ui_state_modify(ui_NormalWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_normalLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_normalBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_cycleTimeLbl, "15");
-        cycleTimerClock = 15;
+        _ui_screen_change(&ui_successFinal, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_successFinal_screen_init);
     }
 }
 
-void ui_event_IntenseWashPanel(lv_event_t * e)
+/// SUCCESS FINAL SCREEN
+void ui_event_HomePageReturn(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washScreen_panels();
-        _ui_state_modify(ui_IntenseWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_intenseBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_intenseLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_cycleTimeLbl, "45");
-        cycleTimerClock = 45;
+        _ui_screen_change(&ui_Home, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_Home_screen_init);
     }
 }
 
-void ui_event_DelicateWashPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_washScreen_panels();
-        _ui_state_modify(ui_DelicateWashPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_delicateLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_delicateBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_cycleTimeLbl, "20");
-        cycleTimerClock = 20;
-    }
-}
-
-void ui_event_backJWImg(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    bool toggle = false;
-    if(event_code == LV_EVENT_CLICKED) {
-        lv_obj_t **target_screen = (lv_obj_t **)lv_event_get_user_data(e);
-        if(target_screen != NULL && *target_screen != NULL)
-            _ui_screen_change(target_screen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
-        else
-            _ui_screen_change(&last_uiScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, NULL);
-
-        if(last_uiScreen == ui_WashDryDetailScreen)
-        {
-            clear_all_washdryScreen_washPanels(&toggle);
-            clear_all_washdryScreen_dryPanels(&toggle);
-            selection = WASH_DRY_NONE;
-        }
-        else if(last_uiScreen == ui_HomeScreen)
-        {
-            clear_all_homeScreen_panels();
-        }
-    }
-}
-
-void ui_event_JustWashStartBtn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        last_uiScreen = lv_scr_act();
-        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock);
-        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
-        createCountdownTimer(cycleTimerClock);
-    }
-}
-
-void ui_event_SmallDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_dryScreen_panels();
-        _ui_state_modify(ui_SmallDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_smallDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_smallDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_JDCycleTimeLbl, "110");
-        cycleTimerClock = 75;
-    }
-}
-
-void ui_event_FullDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_dryScreen_panels();
-        _ui_state_modify(ui_FullDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_FullDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_FullDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_JDCycleTimeLbl, "155");
-        cycleTimerClock = 120;
-    }
-}
-
-void ui_event_SpinDryPanel(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        clear_all_dryScreen_panels();
-        _ui_state_modify(ui_SpinDryPanel, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_SpinDryLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        _ui_state_modify(ui_SpinDryBtmLbl, LV_STATE_CHECKED, _UI_MODIFY_STATE_ADD);
-        lv_label_set_text(ui_JDCycleTimeLbl, "45");
-        cycleTimerClock = 10;
-    }
-}
-
-void ui_event_JustDryStartBtn(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        last_uiScreen = lv_scr_act();
-        lv_label_set_text_fmt(ui_timeRemainLbl, "%d", cycleTimerClock + 35);
-        _ui_screen_change(&ui_TimerStartScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_TimerStartScreen_screen_init);
-        createCountdownTimer(cycleTimerClock + 35);
-    }
-}
-
-void ui_event_BtmETInfoCntr(lv_event_t * e)
-{
-    lv_event_code_t event_code = lv_event_get_code(e);
-    lv_obj_t * target = lv_event_get_target(e);
-
-    if(event_code == LV_EVENT_CLICKED) {
-        _ui_checked_set_text_value(ui_infoETLbl, target, "Show me how to drain\nthe removable tank",
-                                   "Show me how to fill the\nremovable tank");
-        _ui_checked_set_text_value(ui_mainTimeRemainLbl1, target, "How to fill the removable tank",
-                                   "How to drain the removable tank");
-        _ui_checked_set_text_value(ui_infoFillTankStep2, target,
-                                   "Take sink and place the cap\nunder any water stream to easily\nfill",
-                                   "Take tank to the sink(or under\nxouncount) the cup into sink,\nand press the drain button!");
-        _ui_checked_set_text_value(ui_infoFillTankStep3, target, "Reinsert into Eeva!",
-                                   "\nTank will empty itself\nautomatically!");
-    }
-}
 
 ///////////////////// SCREENS ////////////////////
 
 void ui_init(void)
 {
     lv_disp_t * dispp = lv_disp_get_default();
-    lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE), lv_palette_main(LV_PALETTE_RED),
-                                               false, LV_FONT_DEFAULT);
+    lv_theme_t * theme = lv_theme_default_init(dispp, lv_palette_main(LV_PALETTE_BLUE),
+                                lv_palette_main(LV_PALETTE_RED), true, LV_FONT_DEFAULT);
     lv_disp_set_theme(dispp, theme);
-    ui_HomeScreen_screen_init();
-    ui_TimerStartScreen_screen_init();
-    ui_DryScreen_screen_init();
-    ui_LastSuccessScreen_screen_init();
-    ui_WashDryScreen_screen_init();
-    ui_WashDryDetailScreen_screen_init();
-    ui_WashScreen_screen_init();
-    ui_infoScreen_screen_init();
+    ui_Home_screen_init();
+    ui_WashDryLoad_screen_init();
+    ui_WashDryWash_screen_init();
+    ui_WashDryDry_screen_init();
+    ui_WDConfirmation_screen_init();
+    ui_successFinal_screen_init();
+    ui_CycleProgress_screen_init();
     ui____initial_actions0 = lv_obj_create(NULL);
-    lv_disp_load_scr(ui_HomeScreen);
+    lv_disp_load_scr(ui_Home);
 }

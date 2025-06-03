@@ -1142,11 +1142,25 @@
         #define LV_FONT_MONTSERRAT_48 0
     #endif
 #endif
+#ifndef LV_FONT_MONTSERRAT_56
+    #ifdef CONFIG_LV_FONT_MONTSERRAT_56
+        #define LV_FONT_MONTSERRAT_56 CONFIG_LV_FONT_MONTSERRAT_56
+    #else
+        #define LV_FONT_MONTSERRAT_56 0
+    #endif
+#endif
 #ifndef LV_FONT_MONTSERRAT_60
     #ifdef CONFIG_LV_FONT_MONTSERRAT_60
         #define LV_FONT_MONTSERRAT_60 CONFIG_LV_FONT_MONTSERRAT_60
     #else
         #define LV_FONT_MONTSERRAT_60 0
+    #endif
+#endif
+#ifndef LV_FONT_MONTSERRAT_72
+    #ifdef CONFIG_LV_FONT_MONTSERRAT_72
+        #define LV_FONT_MONTSERRAT_72 CONFIG_LV_FONT_MONTSERRAT_72
+    #else
+        #define LV_FONT_MONTSERRAT_72 0
     #endif
 #endif
 #ifndef LV_FONT_MONTSERRAT_100

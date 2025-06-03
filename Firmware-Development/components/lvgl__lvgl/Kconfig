@@ -533,8 +533,12 @@ menu "LVGL configuration"
                 bool "Enable Montserrat 46"
             config LV_FONT_MONTSERRAT_48
                 bool "Enable Montserrat 48"
+            config LV_FONT_MONTSERRAT_56
+                bool "Enable Montserrat 56"
             config LV_FONT_MONTSERRAT_60
                 bool "Enable Montserrat 60"
+            config LV_FONT_MONTSERRAT_72
+                bool "Enable Montserrat 72"
             config LV_FONT_MONTSERRAT_100
                 bool "Enable Montserrat 100"
 
@@ -627,9 +631,15 @@ menu "LVGL configuration"
             config LV_FONT_DEFAULT_MONTSERRAT_48
                 bool "Montserrat 48"
                 select LV_FONT_MONTSERRAT_48
+            config LV_FONT_DEFAULT_MONTSERRAT_56
+                bool "Montserrat 56"
+                select LV_FONT_MONTSERRAT_56
             config LV_FONT_DEFAULT_MONTSERRAT_60
                 bool "Montserrat 60"
                 select LV_FONT_MONTSERRAT_60
+            config LV_FONT_DEFAULT_MONTSERRAT_72
+                bool "Montserrat 72"
+                select LV_FONT_MONTSERRAT_72
             config LV_FONT_DEFAULT_MONTSERRAT_100
                 bool "Montserrat 100"
                 select LV_FONT_MONTSERRAT_100
