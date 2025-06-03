@@ -37,7 +37,7 @@ lv_obj_t * ui_WdMedLoad;
 lv_obj_t * ui_WdFullLoad;
 lv_obj_t * ui_WdLoadInfo;
 lv_obj_t * ui_WdLoadSettings;
-void ui_event_WdSelWashModeV1(lv_event_t * e);
+void ui_event_WdSelLoadModeV1(lv_event_t * e);
 lv_obj_t * ui_WdSelWashModeV1;
 lv_obj_t * ui_WdSelLoadModeV1;
 void ui_event_WdSelDryModeV1(lv_event_t * e);
@@ -55,7 +55,7 @@ lv_obj_t * ui_WdDelicateClean;
 lv_obj_t * ui_WdWashInfo;
 lv_obj_t * ui_WdWashSettings;
 lv_obj_t * ui_WdSelWashModeV2;
-void ui_event_WdSelLoadModeV2(lv_event_t * e);
+void ui_event_WdSelWashModeV2(lv_event_t * e);
 lv_obj_t * ui_WdSelLoadModeV2;
 lv_obj_t * ui_WdSelDryModeV2;
 // CUSTOM VARIABLES
@@ -234,9 +234,13 @@ void deleteCountdownTimer()
 //     }
 // }
 
-///////////
+////////////////// USER DEFINITIONS //////////////////////
 
-//////////
+lv_obj_t * loadModeSelection;
+lv_obj_t * washModeSelection;
+lv_obj_t * dryModeSelection;
+
+/////////////////////////////////////////////////////
 
 
 
@@ -252,12 +256,13 @@ void ui_event_HomeWashDry(lv_event_t * e)
     }
 }
 
-/// WASH DEY LOAD SCREEN
-void ui_event_WdSelWashModeV1(lv_event_t * e)
+/// WASH DRY LOAD SCREEN
+void ui_event_WdSelLoadModeV1(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        loadModeSelection = lv_event_get_user_data(e);
         _ui_screen_change(&ui_WashDryWash, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryWash_screen_init);
     }
 }
@@ -272,11 +277,12 @@ void ui_event_WdSelDryModeV1(lv_event_t * e)
 }
 
 /// WASH DRY WASH SCREEN
-void ui_event_WdSelLoadModeV2(lv_event_t * e)
+void ui_event_WdSelWashModeV2(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        washModeSelection = lv_event_get_user_data(e);
         _ui_screen_change(&ui_WashDryDry, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WashDryDry_screen_init);
     }
 }
@@ -287,6 +293,19 @@ void ui_event_WdSelDryModeV2(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        dryModeSelection = lv_event_get_user_data(e);
+
+        lv_img_set_src(ui_LoadSizeSel, loadModeSelection ? &ui_img_SmallLoadFrame : &ui_img_FullLoadFrame);
+        
+        if(washModeSelection == ui_WdStandClean) lv_img_set_src(ui_WashModeSel, &ui_img_CleanWashFrame);
+        else if(washModeSelection == ui_WdIntenseClean) lv_img_set_src(ui_WashModeSel, &ui_img_IntenseWashFrame);
+        else lv_img_set_src(ui_WashModeSel, &ui_img_DelicatesWashFrame);
+        
+        if(dryModeSelection == ui_WdFastest) lv_img_set_src(ui_DryModeSel, &ui_img_FastestDryFrame);
+        else if(dryModeSelection == ui_WdEcoMode) lv_img_set_src(ui_DryModeSel, &ui_img_EcoDryFrame);
+        else if(dryModeSelection == ui_WdDelicates) lv_img_set_src(ui_DryModeSel, &ui_img_DelicatesDryFrame);
+        else lv_img_set_src(ui_DryModeSel, &ui_img_QuitestDryFrame);
+
         _ui_screen_change(&ui_WDConfirmation, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WDConfirmation_screen_init);
     }
 }

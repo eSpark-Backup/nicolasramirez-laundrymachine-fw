@@ -112,10 +112,10 @@ void ui_WashDryDry_screen_init(void)
     lv_obj_set_align(ui_WdSelDryModeV3, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdSelDryModeV3, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    lv_obj_add_event_cb(ui_WdFastest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_WdEcoMode, ui_event_WdSelDryModeV2, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_WdDelicates, ui_event_WdSelDryModeV2, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_WdQuietest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_WdFastest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdFastest);
+    lv_obj_add_event_cb(ui_WdEcoMode, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdEcoMode);
+    lv_obj_add_event_cb(ui_WdDelicates, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdDelicates);
+    lv_obj_add_event_cb(ui_WdQuietest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdQuietest);
 
 }
 

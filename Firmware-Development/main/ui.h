@@ -38,7 +38,7 @@ extern lv_obj_t * ui_WdMedLoad;
 extern lv_obj_t * ui_WdFullLoad;
 extern lv_obj_t * ui_WdLoadInfo;
 extern lv_obj_t * ui_WdLoadSettings;
-extern void ui_event_WdSelWashModeV1(lv_event_t * e);
+extern void ui_event_WdSelLoadModeV1(lv_event_t * e);
 extern lv_obj_t * ui_WdSelWashModeV1;
 extern lv_obj_t * ui_WdSelLoadModeV1;
 extern void ui_event_WdSelDryModeV1(lv_event_t * e);
@@ -56,7 +56,7 @@ extern lv_obj_t * ui_WdDelicateClean;
 extern lv_obj_t * ui_WdWashInfo;
 extern lv_obj_t * ui_WdWashSettings;
 extern lv_obj_t * ui_WdSelWashModeV2;
-extern void ui_event_WdSelLoadModeV2(lv_event_t * e);
+extern void ui_event_WdSelWashModeV2(lv_event_t * e);
 extern lv_obj_t * ui_WdSelLoadModeV2;
 extern lv_obj_t * ui_WdSelDryModeV2;
 // CUSTOM VARIABLES
@@ -122,6 +122,15 @@ extern lv_obj_t * ui_successFinalImg;
 extern lv_obj_t * ui_successCntrTapHpg;
 extern void ui_event_HomePageReturn(lv_event_t * e);
 // CUSTOM VARIABLES
+
+////////////////// USER DEFINITIONS //////////////////////
+
+extern lv_obj_t * loadModeSelection;
+extern lv_obj_t * washModeSelection;
+extern lv_obj_t * dryModeSelection;
+
+/////////////////////////////////////////////////////
+
 
 // EVENTS
 

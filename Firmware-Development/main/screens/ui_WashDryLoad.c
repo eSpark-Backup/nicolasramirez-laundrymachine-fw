@@ -92,9 +92,8 @@ void ui_WashDryLoad_screen_init(void)
     lv_obj_set_align(ui_WdSelDryModeV1, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdSelDryModeV1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
-    lv_obj_add_event_cb(ui_WdMedLoad, ui_event_WdSelWashModeV1, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_WdFullLoad, ui_event_WdSelWashModeV1, LV_EVENT_ALL, NULL);
-    // lv_obj_add_event_cb(ui_WdSelDryModeV1, ui_event_WdSelDryModeV1, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_WdMedLoad, ui_event_WdSelLoadModeV1, LV_EVENT_ALL, ui_WdMedLoad);
+    lv_obj_add_event_cb(ui_WdFullLoad, ui_event_WdSelLoadModeV1, LV_EVENT_ALL, ui_WdFullLoad);
 
 }
 
