@@ -111,7 +111,8 @@ extern lv_obj_t * ui_SpinBarLbl;
 extern lv_obj_t * ui_pauseCntr;
 extern lv_obj_t * ui_pauseLabel;
 extern lv_obj_t * ui_endCntr;
-void ui_event_ProgressCounter(lv_event_t * e);
+extern void ui_event_PauseResume(lv_event_t * e);
+extern void ui_event_ProgressCounter(lv_event_t * e);
 // CUSTOM VARIABLES
 
 // SCREEN: ui_successFinal

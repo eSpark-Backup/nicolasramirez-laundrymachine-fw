@@ -110,6 +110,7 @@ lv_obj_t * ui_SpinBarLbl;
 lv_obj_t * ui_pauseCntr;
 lv_obj_t * ui_pauseLabel;
 lv_obj_t * ui_endCntr;
+void ui_event_PauseResume(lv_event_t * e);
 void ui_event_ProgressCounter(lv_event_t * e);
 // CUSTOM VARIABLES
 
@@ -321,6 +322,17 @@ void ui_event_WdStartCount(lv_event_t * e)
 }
 
 /// CYCLE PROGRESS SCREEN
+void ui_event_PauseResume(lv_event_t * e)
+{
+    lv_event_code_t event_code = lv_event_get_code(e);
+    static bool paused = false;
+
+    if(event_code == LV_EVENT_CLICKED) {
+        paused = !paused;
+        lv_label_set_text(ui_pauseLabel, paused ? "Pause" : "Resume");
+    }
+}
+
 void ui_event_ProgressCounter(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);

@@ -162,7 +162,7 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_clear_flag(ui_endCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_endCntr, 17, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_pauseCntr, ui_event_ProgressCounter, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_pauseCntr, ui_event_PauseResume, LV_EVENT_ALL, NULL);
     lv_obj_add_event_cb(ui_endCntr, ui_event_ProgressCounter, LV_EVENT_ALL, NULL);
 
 }
