@@ -92,6 +92,64 @@ void ui_WashDryLoad_screen_init(void)
     lv_obj_set_align(ui_WdSelDryModeV1, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdSelDryModeV1, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
 
+    ui_WashDryModeCntr = lv_obj_create(ui_WashDryLoad);
+    lv_obj_remove_style_all(ui_WashDryModeCntr);
+    lv_obj_set_width(ui_WashDryModeCntr, 586);
+    lv_obj_set_height(ui_WashDryModeCntr, 62);
+    lv_obj_set_x(ui_WashDryModeCntr, 10);
+    lv_obj_set_y(ui_WashDryModeCntr, -199);
+    lv_obj_set_align(ui_WashDryModeCntr, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_WashDryModeCntr, LV_OBJ_FLAG_HIDDEN);     /// Flags
+    lv_obj_clear_flag(ui_WashDryModeCntr, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_bg_color(ui_WashDryModeCntr, lv_color_hex(0x101010), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_WashDryModeCntr, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_WDLoadSizeMode = lv_obj_create(ui_WashDryModeCntr);
+    lv_obj_remove_style_all(ui_WDLoadSizeMode);
+    lv_obj_set_width(ui_WDLoadSizeMode, 161);
+    lv_obj_set_height(ui_WDLoadSizeMode, 40);
+    lv_obj_set_x(ui_WDLoadSizeMode, -134);
+    lv_obj_set_y(ui_WDLoadSizeMode, -10);
+    lv_obj_set_align(ui_WDLoadSizeMode, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_WDLoadSizeMode, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WDLoadSizeMode, 58, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_WDLoadSizeMode, lv_color_hex(0x393841), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_WDLoadSizeMode, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_WDLoadSizeLbl = lv_label_create(ui_WDLoadSizeMode);
+    lv_obj_set_width(ui_WDLoadSizeLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_WDLoadSizeLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_x(ui_WDLoadSizeLbl, -2);
+    lv_obj_set_y(ui_WDLoadSizeLbl, 0);
+    lv_obj_set_align(ui_WDLoadSizeLbl, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_WDLoadSizeLbl, "1. Load Size");
+    lv_obj_set_style_text_color(ui_WDLoadSizeLbl, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_WDLoadSizeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui_WDLoadSizeLbl, -1, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui_WDLoadSizeLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_WDLoadSizeLbl, &lv_font_montserrat_26, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_WDJustDryMode = lv_obj_create(ui_WashDryModeCntr);
+    lv_obj_remove_style_all(ui_WDJustDryMode);
+    lv_obj_set_width(ui_WDJustDryMode, 171);
+    lv_obj_set_height(ui_WDJustDryMode, 40);
+    lv_obj_set_x(ui_WDJustDryMode, 110);
+    lv_obj_set_y(ui_WDJustDryMode, -10);
+    lv_obj_set_align(ui_WDJustDryMode, LV_ALIGN_CENTER);
+    lv_obj_clear_flag(ui_WDJustDryMode, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WDJustDryMode, 58, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    ui_WDJustDryModeLbl = lv_label_create(ui_WDJustDryMode);
+    lv_obj_set_width(ui_WDJustDryModeLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_WDJustDryModeLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_WDJustDryModeLbl, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_WDJustDryModeLbl, "2. Dry Mode");
+    lv_obj_set_style_text_color(ui_WDJustDryModeLbl, lv_color_hex(0xABA9AB), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_WDJustDryModeLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_letter_space(ui_WDJustDryModeLbl, -1, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_line_space(ui_WDJustDryModeLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_WDJustDryModeLbl, &lv_font_montserrat_26, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     lv_obj_add_event_cb(ui_WdMedLoad, ui_event_WdSelLoadModeV1, LV_EVENT_ALL, ui_WdMedLoad);
     lv_obj_add_event_cb(ui_WdFullLoad, ui_event_WdSelLoadModeV1, LV_EVENT_ALL, ui_WdFullLoad);
 

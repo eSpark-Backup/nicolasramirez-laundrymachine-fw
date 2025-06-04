@@ -43,7 +43,7 @@ void ui_Home_screen_init(void)
     lv_obj_set_x(ui_HomeJustWash, -263);
     lv_obj_set_y(ui_HomeJustWash, 24);
     lv_obj_set_align(ui_HomeJustWash, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_HomeJustWash, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_HomeJustWash, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_HomeJustWash, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_HomeJustDry = lv_obj_create(ui_Home);
@@ -53,7 +53,7 @@ void ui_Home_screen_init(void)
     lv_obj_set_x(ui_HomeJustDry, 262);
     lv_obj_set_y(ui_HomeJustDry, 24);
     lv_obj_set_align(ui_HomeJustDry, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_HomeJustDry, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_HomeJustDry, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_HomeJustDry, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_HomeSettings = lv_obj_create(ui_Home);
@@ -76,9 +76,9 @@ void ui_Home_screen_init(void)
     lv_obj_clear_flag(ui_HomeInfo, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_HomeInfo, 50, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_HomeJustWash, ui_event_HomeWashDry, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_HomeWashDry, ui_event_HomeWashDry, LV_EVENT_ALL, NULL);
-    lv_obj_add_event_cb(ui_HomeJustDry, ui_event_HomeWashDry, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_HomeJustWash, ui_event_HomeWashDry, LV_EVENT_ALL, ui_HomeJustWash);
+    lv_obj_add_event_cb(ui_HomeWashDry, ui_event_HomeWashDry, LV_EVENT_ALL, ui_HomeWashDry);
+    lv_obj_add_event_cb(ui_HomeJustDry, ui_event_HomeWashDry, LV_EVENT_ALL, ui_HomeJustDry);
 
 }
 

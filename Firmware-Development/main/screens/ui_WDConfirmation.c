@@ -106,7 +106,7 @@ void ui_WDConfirmation_screen_init(void)
     lv_obj_clear_flag(ui_cycWDStartBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_cycWDStartBtn, 17, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_cycWDStartBtn, ui_event_WdStartCount, LV_EVENT_ALL, NULL);
+    lv_obj_add_event_cb(ui_cycWDStartBtn, ui_event_WdStartCount, LV_EVENT_ALL, ui_cycWDStartBtn);
 
 }
 

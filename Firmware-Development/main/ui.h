@@ -43,6 +43,11 @@ extern lv_obj_t * ui_WdSelWashModeV1;
 extern lv_obj_t * ui_WdSelLoadModeV1;
 extern void ui_event_WdSelDryModeV1(lv_event_t * e);
 extern lv_obj_t * ui_WdSelDryModeV1;
+extern lv_obj_t * ui_WashDryModeCntr;
+extern lv_obj_t * ui_WDLoadSizeMode;
+extern lv_obj_t * ui_WDLoadSizeLbl;
+extern lv_obj_t * ui_WDJustDryMode;
+extern lv_obj_t * ui_WDJustDryModeLbl;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_WashDryWash
@@ -59,6 +64,8 @@ extern lv_obj_t * ui_WdSelWashModeV2;
 extern void ui_event_WdSelWashModeV2(lv_event_t * e);
 extern lv_obj_t * ui_WdSelLoadModeV2;
 extern lv_obj_t * ui_WdSelDryModeV2;
+extern lv_obj_t * ui_WDWashCntr;
+extern lv_obj_t * ui_WDWashSettingsLbl;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_WashDryDry
@@ -75,7 +82,24 @@ extern lv_obj_t * ui_WdDrySettings;
 extern lv_obj_t * ui_WdSelWashModeV3;
 extern lv_obj_t * ui_WdSelLoadModeV3;
 extern lv_obj_t * ui_WdSelDryModeV3;
+extern lv_obj_t * ui_WDDryModeCntr;
+extern lv_obj_t * ui_WDLoadMode;
+extern lv_obj_t * ui_WDLoadModeLbl;
+extern lv_obj_t * ui_WDDryMode;
+extern lv_obj_t * ui_WDDryModeLbl;
 extern void ui_event_WdSelDryModeV2(lv_event_t * e);
+// CUSTOM VARIABLES
+
+// SCREEN: ui_JustWashConfirmation
+extern void ui_JustWashConfirmation_screen_init(void);
+extern void ui_JustWashConfirmation_screen_destroy(void);
+extern lv_obj_t * ui_JustWashConfirmation;
+extern lv_obj_t * ui_JWSelOptImg;
+extern lv_obj_t * ui_JWChangeCntr;
+extern lv_obj_t * ui_JWStartBtn;
+extern lv_obj_t * ui_JWTimeCntr;
+extern lv_obj_t * ui_JWMinLbl;
+extern lv_obj_t * ui_JWMinTimeLbl;
 // CUSTOM VARIABLES
 
 // SCREEN: ui_WDConfirmation
@@ -108,6 +132,8 @@ extern lv_obj_t * ui_DryBar;
 extern lv_obj_t * ui_DryBarLbl;
 extern lv_obj_t * ui_SpinBar;
 extern lv_obj_t * ui_SpinBarLbl;
+extern lv_obj_t * ui_JustBar;
+extern lv_obj_t * ui_JustBarLbl;
 extern lv_obj_t * ui_pauseCntr;
 extern lv_obj_t * ui_pauseLabel;
 extern lv_obj_t * ui_endCntr;
@@ -154,7 +180,16 @@ LV_IMG_DECLARE(ui_img_FastestDryFrame);
 LV_IMG_DECLARE(ui_img_FullLoadFrame);
 LV_IMG_DECLARE(ui_img_IntenseWashFrame);
 LV_IMG_DECLARE(ui_img_QuitestDryFrame);
-// LV_IMG_DECLARE();
+LV_IMG_DECLARE(ui_img_JD_DelicatesFrame);
+LV_IMG_DECLARE(ui_img_JD_EcoFrame);
+LV_IMG_DECLARE(ui_img_JD_FastestFrame);
+LV_IMG_DECLARE(ui_img_JD_FullLoadFrame);
+LV_IMG_DECLARE(ui_img_JD_QuitestFrame);
+LV_IMG_DECLARE(ui_img_JD_SmallLoadFrame);
+LV_IMG_DECLARE(ui_img_JW_CnfrmCleanImg);
+LV_IMG_DECLARE(ui_img_JW_CnfrmDelicatesImg);
+LV_IMG_DECLARE(ui_img_JW_CnfrmIntenseImg);
+LV_IMG_DECLARE(ui_img_JW_CnfrmSpinImg);
 
 // UI INIT
 void ui_init(void);

@@ -131,6 +131,31 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_set_style_text_opa(ui_SpinBarLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_SpinBarLbl, &lv_font_montserrat_38, LV_PART_MAIN | LV_STATE_DEFAULT);
 
+    ui_JustBar = lv_bar_create(ui_CycleProgress);
+    lv_bar_set_value(ui_JustBar, 60, LV_ANIM_OFF);
+    lv_bar_set_start_value(ui_JustBar, 5, LV_ANIM_OFF);
+    lv_obj_set_width(ui_JustBar, 777);
+    lv_obj_set_height(ui_JustBar, 73);
+    lv_obj_set_x(ui_JustBar, 0);
+    lv_obj_set_y(ui_JustBar, 12);
+    lv_obj_set_align(ui_JustBar, LV_ALIGN_CENTER);
+    lv_obj_add_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);     /// Flags
+    lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0x357FF6), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_JustBar, 100, LV_PART_MAIN | LV_STATE_DEFAULT);
+
+    lv_obj_set_style_radius(ui_JustBar, 60, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0x357FF6), LV_PART_INDICATOR | LV_STATE_DEFAULT);
+    lv_obj_set_style_bg_opa(ui_JustBar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
+
+    ui_JustBarLbl = lv_label_create(ui_JustBar);
+    lv_obj_set_width(ui_JustBarLbl, LV_SIZE_CONTENT);   /// 1
+    lv_obj_set_height(ui_JustBarLbl, LV_SIZE_CONTENT);    /// 1
+    lv_obj_set_align(ui_JustBarLbl, LV_ALIGN_CENTER);
+    lv_label_set_text(ui_JustBarLbl, "Spining");
+    lv_obj_set_style_text_color(ui_JustBarLbl, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_opa(ui_JustBarLbl, 255, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_text_font(ui_JustBarLbl, &lv_font_montserrat_38, LV_PART_MAIN | LV_STATE_DEFAULT);
+
     ui_pauseCntr = lv_obj_create(ui_CycleProgress);
     lv_obj_remove_style_all(ui_pauseCntr);
     lv_obj_set_width(ui_pauseCntr, 196);

@@ -5,6 +5,7 @@ idf_component_register(
                         "screens/ui_WashDryLoad.c"
                         "screens/ui_WashDryWash.c"
                         "screens/ui_WashDryDry.c"
+                        "screens/ui_JustWashConfirmation.c"
                         "screens/ui_WDConfirmation.c"
                         "screens/ui_successFinal.c"
                         "screens/ui_CycleProgress.c"
@@ -27,6 +28,16 @@ idf_component_register(
                         "images/ui_img_FullLoadFrame.c"
                         "images/ui_img_IntenseWashFrame.c"
                         "images/ui_img_QuitestDryFrame.c"
+                        "images/ui_img_JD_DelicatesFrame.c"
+                        "images/ui_img_JD_EcoFrame.c"
+                        "images/ui_img_JD_FastestFrame.c"
+                        "images/ui_img_JD_FullLoadFrame.c"
+                        "images/ui_img_JD_QuitestFrame.c"
+                        "images/ui_img_JD_SmallLoadFrame.c"
+                        "images/ui_img_JW_CnfrmCleanImg.c"
+                        "images/ui_img_JW_CnfrmDelicatesImg.c"
+                        "images/ui_img_JW_CnfrmIntenseImg.c"
+                        "images/ui_img_JW_CnfrmSpinImg.c"
                         
                         INCLUDE_DIRS ".")
 
