@@ -5,16 +5,6 @@
 
 #include "../ui.h"
 
-// lv_obj_t * ui_WashDryLoad;
-// lv_obj_t * ui_WashDryLoadModeImg;
-// lv_obj_t * ui_WdMedLoad;
-// lv_obj_t * ui_WdFullLoad;
-// lv_obj_t * ui_WdLoadInfo;
-// lv_obj_t * ui_WdLoadSettings;
-// lv_obj_t * ui_WdSelWashModeV1;
-// lv_obj_t * ui_WdSelLoadModeV1;
-// lv_obj_t * ui_WdSelDryModeV1;
-
 void ui_WashDryLoad_screen_init(void)
 {
     ui_WashDryLoad = lv_obj_create(NULL);
@@ -36,6 +26,10 @@ void ui_WashDryLoad_screen_init(void)
     lv_obj_set_y(ui_WdMedLoad, 36);
     lv_obj_set_align(ui_WdMedLoad, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdMedLoad, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WdMedLoad, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WdMedLoad, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WdMedLoad, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WdMedLoad, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WdFullLoad = lv_obj_create(ui_WashDryLoad);
     lv_obj_remove_style_all(ui_WdFullLoad);
@@ -45,6 +39,10 @@ void ui_WashDryLoad_screen_init(void)
     lv_obj_set_y(ui_WdFullLoad, 36);
     lv_obj_set_align(ui_WdFullLoad, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdFullLoad, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WdFullLoad, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WdFullLoad, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WdFullLoad, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WdFullLoad, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WdLoadInfo = lv_obj_create(ui_WashDryLoad);
     lv_obj_remove_style_all(ui_WdLoadInfo);

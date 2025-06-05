@@ -47,6 +47,9 @@ void ui_WDConfirmation_screen_init(void)
     lv_obj_set_align(ui_WDLoadSizeChangeCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WDLoadSizeChangeCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_WDLoadSizeChangeCntr, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WDLoadSizeChangeCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WDLoadSizeChangeCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WDLoadSizeChangeCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WashModeSel = lv_img_create(ui_WDConfirmation);
     lv_img_set_src(ui_WashModeSel, &ui_img_DelicatesWashFrame);
@@ -67,6 +70,9 @@ void ui_WDConfirmation_screen_init(void)
     lv_obj_set_align(ui_WDWashChangeCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WDWashChangeCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_WDWashChangeCntr, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WDWashChangeCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WDWashChangeCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WDWashChangeCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_DryModeSel = lv_img_create(ui_WDConfirmation);
     lv_img_set_src(ui_DryModeSel, &ui_img_EcoDryFrame);
@@ -87,6 +93,9 @@ void ui_WDConfirmation_screen_init(void)
     lv_obj_set_align(ui_WDDryChangeCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WDDryChangeCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_WDDryChangeCntr, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WDDryChangeCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WDDryChangeCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WDDryChangeCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_cycTimeCntr = lv_obj_create(ui_WDConfirmation);
     lv_obj_remove_style_all(ui_cycTimeCntr);
@@ -135,6 +144,9 @@ void ui_WDConfirmation_screen_init(void)
     lv_obj_set_align(ui_cycWDStartBtn, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_cycWDStartBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_cycWDStartBtn, 17, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_cycWDStartBtn, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_cycWDStartBtn, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_cycWDStartBtn, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     lv_obj_add_event_cb(ui_WDLoadSizeChangeCntr, ui_event_ChangeSelection, LV_EVENT_ALL, ui_WDLoadSizeChangeCntr);
     lv_obj_add_event_cb(ui_WDWashChangeCntr, ui_event_ChangeSelection, LV_EVENT_ALL, ui_WDWashChangeCntr);

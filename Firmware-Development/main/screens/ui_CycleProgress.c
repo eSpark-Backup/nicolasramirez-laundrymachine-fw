@@ -165,6 +165,9 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_set_align(ui_pauseCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_pauseCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_pauseCntr, 17, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_pauseCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_pauseCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_pauseCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_pauseLabel = lv_label_create(ui_pauseCntr);
     lv_obj_set_width(ui_pauseLabel, LV_SIZE_CONTENT);   /// 1
@@ -186,6 +189,9 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_set_align(ui_endCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_endCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_endCntr, 17, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_endCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_endCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_endCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WDTimeCntr = lv_obj_create(ui_CycleProgress);
     lv_obj_remove_style_all(ui_WDTimeCntr);

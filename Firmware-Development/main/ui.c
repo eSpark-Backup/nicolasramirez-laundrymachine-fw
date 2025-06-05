@@ -498,8 +498,8 @@ void ui_event_PauseResume(lv_event_t * e)
     static bool paused = false;
 
     if(event_code == LV_EVENT_CLICKED) {
-        paused = !paused;
         lv_label_set_text(ui_pauseLabel, paused ? "Pause" : "Resume");
+        paused = !paused;
     }
 }
 

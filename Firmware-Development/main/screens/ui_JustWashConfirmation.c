@@ -27,6 +27,9 @@ void ui_JustWashConfirmation_screen_init(void)
     lv_obj_set_align(ui_JWChangeCntr, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_JWChangeCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_JWChangeCntr, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_JWChangeCntr, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_JWChangeCntr, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_JWChangeCntr, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_JWStartBtn = lv_obj_create(ui_JustWashConfirmation);
     lv_obj_remove_style_all(ui_JWStartBtn);
@@ -37,6 +40,9 @@ void ui_JustWashConfirmation_screen_init(void)
     lv_obj_set_align(ui_JWStartBtn, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_JWStartBtn, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_JWStartBtn, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_JWStartBtn, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_JWStartBtn, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_JWStartBtn, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_JWTimeCntr = lv_obj_create(ui_JustWashConfirmation);
     lv_obj_remove_style_all(ui_JWTimeCntr);

@@ -47,6 +47,10 @@ void ui_WashDryWash_screen_init(void)
     lv_obj_set_y(ui_WdStandClean, -61);
     lv_obj_set_align(ui_WdStandClean, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdStandClean, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WdStandClean, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WdStandClean, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WdStandClean, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WdStandClean, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WdIntenseClean = lv_obj_create(ui_WashDryWash);
     lv_obj_remove_style_all(ui_WdIntenseClean);
@@ -56,6 +60,10 @@ void ui_WashDryWash_screen_init(void)
     lv_obj_set_y(ui_WdIntenseClean, -61);
     lv_obj_set_align(ui_WdIntenseClean, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdIntenseClean, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WdIntenseClean, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WdIntenseClean, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WdIntenseClean, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WdIntenseClean, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WdDelicateClean = lv_obj_create(ui_WashDryWash);
     lv_obj_remove_style_all(ui_WdDelicateClean);
@@ -65,6 +73,10 @@ void ui_WashDryWash_screen_init(void)
     lv_obj_set_y(ui_WdDelicateClean, 137);
     lv_obj_set_align(ui_WdDelicateClean, LV_ALIGN_CENTER);
     lv_obj_clear_flag(ui_WdDelicateClean, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_set_style_radius(ui_WdDelicateClean, 25, LV_PART_MAIN | LV_STATE_DEFAULT);
+    lv_obj_set_style_border_color(ui_WdDelicateClean, lv_color_hex(0xC2C2C2), LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_opa(ui_WdDelicateClean, 255, LV_PART_MAIN | LV_STATE_FOCUSED);
+    lv_obj_set_style_border_width(ui_WdDelicateClean, 2, LV_PART_MAIN | LV_STATE_FOCUSED);
 
     ui_WdWashInfo = lv_obj_create(ui_WashDryWash);
     lv_obj_remove_style_all(ui_WdWashInfo);
