@@ -81,7 +81,7 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_set_style_text_font(ui_cycProgCurrentLabel, &lv_font_montserrat_56, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_DryBar = lv_bar_create(ui_CycleProgress);
-    lv_bar_set_start_value(ui_DryBar, 5, LV_ANIM_OFF);
+    lv_bar_set_start_value(ui_DryBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_DryBar, 449);
     lv_obj_set_height(ui_DryBar, 73);
     lv_obj_set_x(ui_DryBar, 162);
@@ -107,7 +107,7 @@ void ui_CycleProgress_screen_init(void)
 
     ui_SpinBar = lv_bar_create(ui_CycleProgress);
     lv_bar_set_value(ui_SpinBar, 60, LV_ANIM_OFF);
-    lv_bar_set_start_value(ui_SpinBar, 5, LV_ANIM_OFF);
+    lv_bar_set_start_value(ui_SpinBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_SpinBar, 319);
     lv_obj_set_height(ui_SpinBar, 73);
     lv_obj_set_x(ui_SpinBar, -228);
@@ -133,7 +133,7 @@ void ui_CycleProgress_screen_init(void)
 
     ui_JustBar = lv_bar_create(ui_CycleProgress);
     lv_bar_set_value(ui_JustBar, 60, LV_ANIM_OFF);
-    lv_bar_set_start_value(ui_JustBar, 5, LV_ANIM_OFF);
+    lv_bar_set_start_value(ui_JustBar, 0, LV_ANIM_OFF);
     lv_obj_set_width(ui_JustBar, 777);
     lv_obj_set_height(ui_JustBar, 73);
     lv_obj_set_x(ui_JustBar, 0);

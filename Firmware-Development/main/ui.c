@@ -197,8 +197,22 @@ int drySelTime = 0;
 
 lv_obj_t * last_uiScreen;
 lv_timer_t *countdown_timer = NULL;
-uint32_t startTime, lastSec;
+uint32_t startTime, lastSec, barValue;
 int secRemain = 60;
+
+
+////////////////// USER DEFINITIONS //////////////////////
+
+lv_obj_t * loadModeSelection = NULL;
+lv_obj_t * washModeSelection = NULL;
+lv_obj_t * dryModeSelection = NULL;
+lv_obj_t * Mode = NULL;
+cycleData *washCycle;
+cycleData *dryCycle;
+
+/////////////////////////////////////////////////////
+
+
 ///////////////////// SUPPORT FUNCTIONS ////////////////////
 
 void memLog()
@@ -229,55 +243,71 @@ void deleteCountdownTimer()
     }
 }
 
-// void updateTimer(lv_timer_t * timer)
-// {
-//     if(_TIME_S - lastSec >= secRemain)
-//     {        
-//         if (startTime > 0) {
-//             startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
-//             lv_label_set_text_fmt(ui_timeRemainLbl, "%" PRIu32, startTime);
-//             ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
-//             lastSec = _TIME_S;
-//             secRemain = 60;
-//             if(startTime == 0)
-//             {
-//                 // Countdown complete — stop the timer
-//                 deleteCountdownTimer();
-//                 lv_label_set_text(ui_timeRemainLbl, "0");
-//                 _ui_screen_change(&ui_LastSuccessScreen, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_LastSuccessScreen_screen_init);
-//             }
-//         }
-//     }
-//     else
-//     {
-//         static bool color_brown = true;
-//         lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
-//         color_brown = !color_brown;
-//         return;
-//     }
-// }
+void updateTimer(lv_timer_t * timer)
+{
+    if(_TIME_S - lastSec >= secRemain)
+    {        
+        if (startTime > 0) {
+            startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
+            if(Mode == ui_HomeJustWash)
+            {
+                lv_label_set_text_fmt(ui_JWMinTimeLbl, "%" PRIu32, startTime);
+                lv_bar_set_value(ui_JustBar, barValue - startTime, LV_ANIM_OFF);
+            }
+            else
+            {
+                int min = startTime % 60;
+                int hr = startTime / 60;
+                lv_label_set_text_fmt(ui_WDminLbl, "%02d", min);
+                lv_label_set_text_fmt(ui_WDhrLbl, "%d", hr);
 
-// void createCountdownTimer(int timeInMin)
-// {
-//     deleteCountdownTimer();
-//     if (!countdown_timer) {  // Avoid multiple timers
-//         startTime = timeInMin;
-//         lastSec = _TIME_S;
-//         ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
-//         countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
-//     }
-// }
+                if (Mode == ui_HomeJustDry)
+                {
+                    lv_bar_set_value(ui_JustBar, barValue - startTime, LV_ANIM_OFF);
+                }
+                else
+                {
+                    int spinTime = washCycle->min;
+                    int dryTime = dryCycle->min;
+                    if(spinTime > 0)
+                    {
+                        lv_bar_set_value(ui_SpinBar, barValue - startTime , LV_ANIM_OFF);
+                        spinTime--;
+                    }
+                }
+            }
+            ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
+            lastSec = _TIME_S;
+            secRemain = 60;
+            if(startTime == 0)
+            {
+                // Countdown complete — stop the timer
+                deleteCountdownTimer();
+                _ui_screen_change(&ui_successFinal, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_successFinal_screen_init);
+            }
+        }
+    }
+    // else
+    // {
+    //     static bool color_brown = true;
+    //     lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
+    //     color_brown = !color_brown;
+    //     return;
+    // }
+}
 
-////////////////// USER DEFINITIONS //////////////////////
+void createCountdownTimer(int timeInMin)
+{
+    deleteCountdownTimer();
+    if (!countdown_timer) {  // Avoid multiple timers
+        startTime = timeInMin;
+        barValue = timeInMin;
+        lastSec = _TIME_S;
+        ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
+        countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
+    }
+}
 
-lv_obj_t * loadModeSelection = NULL;
-lv_obj_t * washModeSelection = NULL;
-lv_obj_t * dryModeSelection = NULL;
-lv_obj_t * Mode = NULL;
-cycleData *washCycle;
-cycleData *dryCycle;
-
-/////////////////////////////////////////////////////
 
 
 
@@ -364,6 +394,8 @@ void ui_event_WdSelWashModeV2(lv_event_t * e)
                lv_img_set_src(ui_JWSelOptImg, &ui_img_JW_CnfrmDelicatesImg);
             
             lv_label_set_text_fmt(ui_JWMinTimeLbl, "%d", washCycle->min);
+            lv_bar_set_range(ui_JustBar, 0, washCycle->min*60);
+            lv_bar_set_value(ui_JustBar, 0, LV_ANIM_OFF);
             _ui_screen_change(&ui_JustWashConfirmation, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_JustWashConfirmation_screen_init);
         }
     }
@@ -426,7 +458,7 @@ void ui_event_WdSelDryModeV2(lv_event_t * e)
         lv_obj_set_x(ui_WDLoadSizeChangeCntr, WashDryModeEnable? -1 : -3);
         lv_obj_set_x(ui_WDDryChangeCntr, WashDryModeEnable? -1 : -3);
         lv_label_set_text_fmt(ui_WDminLbl, "%02d", min);
-        lv_label_set_text_fmt(ui_WDhrLbl, "%2d", hr);
+        lv_label_set_text_fmt(ui_WDhrLbl, "%d", hr);
         _ui_screen_change(&ui_WDConfirmation, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_WDConfirmation_screen_init);
     }
 }
@@ -436,11 +468,12 @@ void ui_event_WdStartCount(lv_event_t * e)
 {
     lv_event_code_t event_code = lv_event_get_code(e);
     lv_obj_t * countMode = lv_event_get_user_data(e);
+    int time = 0;
 
     if(event_code == LV_EVENT_CLICKED) {
-
         if(countMode == ui_JWStartBtn && Mode == ui_HomeJustWash)
         {
+            time = washCycle->min;
             lv_obj_clear_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
             lv_obj_clear_flag(ui_WDTimeCntr, LV_OBJ_FLAG_HIDDEN);
             lv_obj_add_flag(ui_cycProgCntr, LV_OBJ_FLAG_HIDDEN);
@@ -452,6 +485,10 @@ void ui_event_WdStartCount(lv_event_t * e)
         {
             if(Mode == ui_HomeJustDry)
             {
+                time = (dryCycle->hr * 60) + dryCycle->min;
+                lv_bar_set_range(ui_JustBar, 0, time*60);
+                lv_bar_set_value(ui_JustBar, 0, LV_ANIM_OFF);
+                lv_label_set_text(ui_JustBarLbl, "Drying");
                 lv_obj_clear_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
                 lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0xF17415), LV_PART_MAIN | LV_STATE_DEFAULT);
                 lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0xF17415), LV_PART_INDICATOR | LV_STATE_DEFAULT);
@@ -459,12 +496,18 @@ void ui_event_WdStartCount(lv_event_t * e)
             }
             else
             {
+                time = ((washCycle->hr + dryCycle->hr) * 60) + (washCycle->min + dryCycle->min);
+                lv_bar_set_range(ui_SpinBar, 0, time*60);
+                lv_bar_set_value(ui_SpinBar, 0, LV_ANIM_OFF);
+                lv_bar_set_range(ui_DryBar, 0, time*60);
+                lv_bar_set_value(ui_DryBar, 0, LV_ANIM_OFF);
                 lv_obj_add_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
                 lv_label_set_text_fmt(ui_cycProgCurrentLabel, "%s", washCycle->modeName);
             }
             lv_obj_add_flag(ui_WDTimeCntr, LV_OBJ_FLAG_HIDDEN);
             lv_obj_clear_flag(ui_cycProgCntr, LV_OBJ_FLAG_HIDDEN);
         }
+        createCountdownTimer(time);
         _ui_screen_change(&ui_CycleProgress, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_CycleProgress_screen_init);
     }
 }
