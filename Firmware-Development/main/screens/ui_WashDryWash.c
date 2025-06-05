@@ -5,17 +5,26 @@
 
 #include "../ui.h"
 
-// lv_obj_t * ui_WashDryWash;
-// lv_obj_t * ui_WashDryWashModeImg;
-// lv_obj_t * ui_WdStandClean;
-// lv_obj_t * ui_WdIntenseClean;
-// lv_obj_t * ui_WdDelicateClean;
-// lv_obj_t * ui_WdWashInfo;
-// lv_obj_t * ui_WdWashSettings;
-// lv_obj_t * ui_WdSelWashModeV2;
-// lv_obj_t * ui_WdSelLoadModeV2;
-// lv_obj_t * ui_WdSelDryModeV2;
+static void setup_event_cb(void) {
+    
+    static cycleData cycleMappings[4] = {
+    {NULL, 20, 0, "Standard Clean Wash"},
+    {NULL, 45, 0, "Intense Wash"},
+    {NULL, 30, 0, "Delicates Wash"},
+};
+    cycleMappings[0].obj = ui_WdStandClean;
+    cycleMappings[1].obj = ui_WdIntenseClean;
+    cycleMappings[2].obj = ui_WdDelicateClean;
 
+    for (int i = 0; i < 3; i++) {
+        lv_obj_add_event_cb(
+            cycleMappings[i].obj,
+            ui_event_WdSelWashModeV2,
+            LV_EVENT_ALL,
+            &cycleMappings[i]
+        );
+    }
+}
 
 void ui_WashDryWash_screen_init(void)
 {
@@ -124,10 +133,7 @@ void ui_WashDryWash_screen_init(void)
     lv_label_set_text(ui_WDWashSettingsLbl, "Wash settings");
     lv_obj_set_style_text_font(ui_WDWashSettingsLbl, &lv_font_montserrat_42, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_WdStandClean, ui_event_WdSelWashModeV2, LV_EVENT_ALL, ui_WdStandClean);
-    lv_obj_add_event_cb(ui_WdIntenseClean, ui_event_WdSelWashModeV2, LV_EVENT_ALL, ui_WdIntenseClean);
-    lv_obj_add_event_cb(ui_WdDelicateClean, ui_event_WdSelWashModeV2, LV_EVENT_ALL, ui_WdDelicateClean);
-
+    setup_event_cb();
 }
 
 void ui_WashDryWash_screen_destroy(void)

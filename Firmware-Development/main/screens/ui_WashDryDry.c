@@ -5,17 +5,28 @@
 
 #include "../ui.h"
 
-// lv_obj_t * ui_WashDryDry;
-// lv_obj_t * ui_WashDryDryModeImg;
-// lv_obj_t * ui_WdFastest;
-// lv_obj_t * ui_WdEcoMode;
-// lv_obj_t * ui_WdDelicates;
-// lv_obj_t * ui_WdQuietest;
-// lv_obj_t * ui_WdDryInfo;
-// lv_obj_t * ui_WdDrySettings;
-// lv_obj_t * ui_WdSelWashModeV3;
-// lv_obj_t * ui_WdSelLoadModeV3;
-// lv_obj_t * ui_WdSelDryModeV3;
+static void setup_event_cb(void) {
+    
+    static cycleData cycleMappings[4] = {
+    {NULL, 15, 1, "Fastest Dry"},
+    {NULL, 30, 5, "Eco-Mode Dry"},
+    {NULL, 30, 2, "Delicates Dry"},
+    {NULL, 15, 2, "Quietest Dry"},
+};
+    cycleMappings[0].obj = ui_WdFastest;
+    cycleMappings[1].obj = ui_WdEcoMode;
+    cycleMappings[2].obj = ui_WdDelicates;
+    cycleMappings[3].obj = ui_WdQuietest;
+
+    for (int i = 0; i < 4; i++) {
+        lv_obj_add_event_cb(
+            cycleMappings[i].obj,
+            ui_event_WdSelDryModeV2,
+            LV_EVENT_ALL,
+            &cycleMappings[i]
+        );
+    }
+}
 
 void ui_WashDryDry_screen_init(void)
 {
@@ -168,11 +179,7 @@ void ui_WashDryDry_screen_init(void)
     lv_obj_set_style_text_line_space(ui_WDDryModeLbl, 0, LV_PART_MAIN | LV_STATE_DEFAULT);
     lv_obj_set_style_text_font(ui_WDDryModeLbl, &lv_font_montserrat_26, LV_PART_MAIN | LV_STATE_DEFAULT);
 
-    lv_obj_add_event_cb(ui_WdFastest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdFastest);
-    lv_obj_add_event_cb(ui_WdEcoMode, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdEcoMode);
-    lv_obj_add_event_cb(ui_WdDelicates, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdDelicates);
-    lv_obj_add_event_cb(ui_WdQuietest, ui_event_WdSelDryModeV2, LV_EVENT_ALL, ui_WdQuietest);
-
+    setup_event_cb();
 }
 
 void ui_WashDryDry_screen_destroy(void)

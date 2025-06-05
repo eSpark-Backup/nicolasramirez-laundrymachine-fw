@@ -25,7 +25,7 @@ void ui_JustWashConfirmation_screen_init(void)
     lv_obj_set_x(ui_JWChangeCntr, 0);
     lv_obj_set_y(ui_JWChangeCntr, 89);
     lv_obj_set_align(ui_JWChangeCntr, LV_ALIGN_CENTER);
-    lv_obj_clear_flag(ui_JWChangeCntr, LV_OBJ_FLAG_CLICKABLE | LV_OBJ_FLAG_SCROLLABLE);      /// Flags
+    lv_obj_clear_flag(ui_JWChangeCntr, LV_OBJ_FLAG_SCROLLABLE);      /// Flags
     lv_obj_set_style_radius(ui_JWChangeCntr, 14, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     ui_JWStartBtn = lv_obj_create(ui_JustWashConfirmation);
@@ -68,6 +68,7 @@ void ui_JustWashConfirmation_screen_init(void)
     lv_obj_set_style_text_font(ui_JWMinTimeLbl, &lv_font_montserrat_48, LV_PART_MAIN | LV_STATE_DEFAULT);
 
     lv_obj_add_event_cb(ui_JWStartBtn, ui_event_WdStartCount, LV_EVENT_ALL, ui_JWStartBtn);
+    lv_obj_add_event_cb(ui_JWChangeCntr, ui_event_ChangeSelection, LV_EVENT_ALL, ui_JWChangeCntr);
 }
 
 void ui_JustWashConfirmation_screen_destroy(void)

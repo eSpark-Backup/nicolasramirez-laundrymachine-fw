@@ -108,14 +108,18 @@ extern void ui_WDConfirmation_screen_destroy(void);
 extern lv_obj_t * ui_WDConfirmation;
 extern lv_obj_t * ui_WDbgImg;
 extern lv_obj_t * ui_LoadSizeSel;
+extern lv_obj_t * ui_WDLoadSizeChangeCntr;
 extern lv_obj_t * ui_WashModeSel;
+extern lv_obj_t * ui_WDWashChangeCntr;
 extern lv_obj_t * ui_DryModeSel;
+extern lv_obj_t * ui_WDDryChangeCntr;
 extern lv_obj_t * ui_cycTimeCntr;
 extern lv_obj_t * ui_WDhrMinLbl;
 extern lv_obj_t * ui_WDminLbl;
 extern lv_obj_t * ui_WDhrLbl;
 extern lv_obj_t * ui_cycWDStartBtn;
 extern void ui_event_WdStartCount(lv_event_t * e);
+void ui_event_ChangeSelection(lv_event_t * e);
 // CUSTOM VARIABLES
 
 // SCREEN: ui_CycleProgress
@@ -137,6 +141,9 @@ extern lv_obj_t * ui_JustBarLbl;
 extern lv_obj_t * ui_pauseCntr;
 extern lv_obj_t * ui_pauseLabel;
 extern lv_obj_t * ui_endCntr;
+extern lv_obj_t * ui_WDTimeCntr;
+extern lv_obj_t * ui_WDMinTimeTextLbl;
+extern lv_obj_t * ui_WDMinTimeNumLbl;
 extern void ui_event_PauseResume(lv_event_t * e);
 extern void ui_event_ProgressCounter(lv_event_t * e);
 // CUSTOM VARIABLES
@@ -152,10 +159,18 @@ extern void ui_event_HomePageReturn(lv_event_t * e);
 
 ////////////////// USER DEFINITIONS //////////////////////
 
+typedef struct {
+    lv_obj_t * obj;
+    int min;
+    int hr;
+    char modeName[50];
+} cycleData;
+
 extern lv_obj_t * loadModeSelection;
 extern lv_obj_t * washModeSelection;
 extern lv_obj_t * dryModeSelection;
-
+extern cycleData *washCycle;
+extern cycleData *dryCycle;
 /////////////////////////////////////////////////////
 
 
