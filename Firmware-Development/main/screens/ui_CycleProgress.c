@@ -120,11 +120,11 @@ void ui_CycleProgress_screen_init(void)
     lv_obj_set_style_bg_color(ui_SpinBar, lv_color_hex(0x357FF6), LV_PART_INDICATOR | LV_STATE_DEFAULT);
     lv_obj_set_style_bg_opa(ui_SpinBar, 255, LV_PART_INDICATOR | LV_STATE_DEFAULT);
 
-    ui_SpinBarLbl = lv_label_create(ui_CycleProgress);
+    ui_SpinBarLbl = lv_label_create(ui_SpinBar);
     lv_obj_set_width(ui_SpinBarLbl, LV_SIZE_CONTENT);   /// 1
     lv_obj_set_height(ui_SpinBarLbl, LV_SIZE_CONTENT);    /// 1
-    lv_obj_set_x(ui_SpinBarLbl, -278);
-    lv_obj_set_y(ui_SpinBarLbl, 12);
+    lv_obj_set_x(ui_SpinBarLbl, -50);
+    lv_obj_set_y(ui_SpinBarLbl, 0);
     lv_obj_set_align(ui_SpinBarLbl, LV_ALIGN_CENTER);
     lv_label_set_text(ui_SpinBarLbl, "Spin");
     lv_obj_set_style_text_color(ui_SpinBarLbl, lv_color_hex(0xFFFFFF), LV_PART_MAIN | LV_STATE_DEFAULT);

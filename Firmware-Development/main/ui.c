@@ -245,21 +245,21 @@ void deleteCountdownTimer()
 
 void updateTimer(lv_timer_t * timer)
 {
-    if(_TIME_S - lastSec >= secRemain)
-    {        
+    if(_TIME_S - lastSec >= 1)
+    {
         if (startTime > 0) {
             startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
             if(Mode == ui_HomeJustWash)
             {
-                lv_label_set_text_fmt(ui_JWMinTimeLbl, "%" PRIu32, startTime);
+                lv_label_set_text_fmt(ui_WDMinTimeNumLbl, "%" PRIu32, (startTime/60)%60);
                 lv_bar_set_value(ui_JustBar, barValue - startTime, LV_ANIM_OFF);
             }
             else
             {
-                int min = startTime % 60;
-                int hr = startTime / 60;
-                lv_label_set_text_fmt(ui_WDminLbl, "%02d", min);
-                lv_label_set_text_fmt(ui_WDhrLbl, "%d", hr);
+                int min = (startTime/60) % 60;
+                int hr = startTime / 3600;
+                lv_label_set_text_fmt(ui_cycProgminLbl, "%02d", min);
+                lv_label_set_text_fmt(ui_cycProghrLbl, "%d", hr);
 
                 if (Mode == ui_HomeJustDry)
                 {
@@ -278,7 +278,7 @@ void updateTimer(lv_timer_t * timer)
             }
             ESP_LOGI(TAG, "Updated timer: %" PRIu32, startTime);
             lastSec = _TIME_S;
-            secRemain = 60;
+            // secRemain = 60;
             if(startTime == 0)
             {
                 // Countdown complete — stop the timer
@@ -296,15 +296,15 @@ void updateTimer(lv_timer_t * timer)
     // }
 }
 
-void createCountdownTimer(int timeInMin)
+void createCountdownTimer(int timeInSec)
 {
     deleteCountdownTimer();
     if (!countdown_timer) {  // Avoid multiple timers
-        startTime = timeInMin;
-        barValue = timeInMin;
+        startTime = timeInSec;
+        barValue = timeInSec;
         lastSec = _TIME_S;
         ESP_LOGI(TAG, "Created timer: %" PRIu32, startTime);
-        countdown_timer = lv_timer_create(updateTimer, 1000*2, NULL);
+        countdown_timer = lv_timer_create(updateTimer, 1000, NULL);
     }
 }
 
@@ -475,6 +475,8 @@ void ui_event_WdStartCount(lv_event_t * e)
         {
             time = washCycle->min;
             lv_obj_clear_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_add_flag(ui_SpinBar, LV_OBJ_FLAG_HIDDEN);
+            lv_obj_add_flag(ui_DryBar, LV_OBJ_FLAG_HIDDEN);
             lv_obj_clear_flag(ui_WDTimeCntr, LV_OBJ_FLAG_HIDDEN);
             lv_obj_add_flag(ui_cycProgCntr, LV_OBJ_FLAG_HIDDEN);
             lv_label_set_text_fmt(ui_cycProgCurrentLabel, "%s", washCycle->modeName);
@@ -490,6 +492,8 @@ void ui_event_WdStartCount(lv_event_t * e)
                 lv_bar_set_value(ui_JustBar, 0, LV_ANIM_OFF);
                 lv_label_set_text(ui_JustBarLbl, "Drying");
                 lv_obj_clear_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
+                lv_obj_add_flag(ui_SpinBar, LV_OBJ_FLAG_HIDDEN);
+                lv_obj_add_flag(ui_DryBar, LV_OBJ_FLAG_HIDDEN);
                 lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0xF17415), LV_PART_MAIN | LV_STATE_DEFAULT);
                 lv_obj_set_style_bg_color(ui_JustBar, lv_color_hex(0xF17415), LV_PART_INDICATOR | LV_STATE_DEFAULT);
                 lv_label_set_text_fmt(ui_cycProgCurrentLabel, "%s", dryCycle->modeName);
@@ -502,12 +506,14 @@ void ui_event_WdStartCount(lv_event_t * e)
                 lv_bar_set_range(ui_DryBar, 0, time*60);
                 lv_bar_set_value(ui_DryBar, 0, LV_ANIM_OFF);
                 lv_obj_add_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
+                lv_obj_clear_flag(ui_SpinBar, LV_OBJ_FLAG_HIDDEN);
+                lv_obj_clear_flag(ui_DryBar, LV_OBJ_FLAG_HIDDEN);
                 lv_label_set_text_fmt(ui_cycProgCurrentLabel, "%s", washCycle->modeName);
             }
             lv_obj_add_flag(ui_WDTimeCntr, LV_OBJ_FLAG_HIDDEN);
             lv_obj_clear_flag(ui_cycProgCntr, LV_OBJ_FLAG_HIDDEN);
         }
-        createCountdownTimer(time);
+        createCountdownTimer(time*60);
         _ui_screen_change(&ui_CycleProgress, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_CycleProgress_screen_init);
     }
 }
@@ -551,6 +557,7 @@ void ui_event_ProgressCounter(lv_event_t * e)
     lv_event_code_t event_code = lv_event_get_code(e);
 
     if(event_code == LV_EVENT_CLICKED) {
+        deleteCountdownTimer();
         _ui_screen_change(&ui_successFinal, LV_SCR_LOAD_ANIM_NONE, 0, 0, &ui_successFinal_screen_init);
     }
 }
