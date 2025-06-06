@@ -251,14 +251,14 @@ void updateTimer(lv_timer_t * timer)
             startTime--;  // Decrement by 1 minute every 30s (i.e. half-minute steps)
             if(Mode == ui_HomeJustWash)
             {
-                lv_label_set_text_fmt(ui_WDMinTimeNumLbl, "%" PRIu32, (startTime/60)%60);
+                lv_label_set_text_fmt(ui_WDMinTimeNumLbl, "%" PRIu32, ((startTime/60)%60)+1);
                 lv_bar_set_value(ui_JustBar, barValue - startTime, LV_ANIM_OFF);
             }
             else
             {
                 int min = (startTime/60) % 60;
                 int hr = startTime / 3600;
-                lv_label_set_text_fmt(ui_cycProgminLbl, "%02d", min);
+                lv_label_set_text_fmt(ui_cycProgminLbl, "%02d", min+1);
                 lv_label_set_text_fmt(ui_cycProghrLbl, "%d", hr);
 
                 if (Mode == ui_HomeJustDry)
@@ -267,12 +267,15 @@ void updateTimer(lv_timer_t * timer)
                 }
                 else
                 {
-                    int spinTime = washCycle->min;
-                    int dryTime = dryCycle->min;
-                    if(spinTime > 0)
+                    if((barValue - startTime) <= (washCycle->min*60))
                     {
                         lv_bar_set_value(ui_SpinBar, barValue - startTime , LV_ANIM_OFF);
-                        spinTime--;
+                        ESP_LOGW(TAG, "Spin bar: %" PRIu32, barValue - startTime);
+                    }
+                    else
+                    {
+                        lv_bar_set_value(ui_DryBar, barValue - startTime - (washCycle->min*60) , LV_ANIM_OFF);
+                        ESP_LOGE(TAG, "Dry bar: %" PRIu32, barValue - startTime - (washCycle->min*60));
                     }
                 }
             }
@@ -287,13 +290,6 @@ void updateTimer(lv_timer_t * timer)
             }
         }
     }
-    // else
-    // {
-    //     static bool color_brown = true;
-    //     lv_obj_set_style_text_color(ui_timeRemainLbl, lv_color_hex(color_brown ? 0x979797 : 0x2F2B22), LV_PART_MAIN | LV_STATE_DEFAULT);
-    //     color_brown = !color_brown;
-    //     return;
-    // }
 }
 
 void createCountdownTimer(int timeInSec)
@@ -308,8 +304,15 @@ void createCountdownTimer(int timeInSec)
     }
 }
 
+void pauseTimer()
+{
+    lv_timer_pause(countdown_timer);
+}
 
-
+void resumeTimer()
+{
+    lv_timer_resume(countdown_timer);
+}
 
 ///////////////////// FUNCTIONS ////////////////////
 
@@ -500,10 +503,12 @@ void ui_event_WdStartCount(lv_event_t * e)
             }
             else
             {
-                time = ((washCycle->hr + dryCycle->hr) * 60) + (washCycle->min + dryCycle->min);
-                lv_bar_set_range(ui_SpinBar, 0, time*60);
+                int spinTime = washCycle->min;
+                int dryTime = dryCycle->hr * 60 + dryCycle->min;
+                time = spinTime + dryTime;
+                lv_bar_set_range(ui_SpinBar, 0, spinTime*60);
                 lv_bar_set_value(ui_SpinBar, 0, LV_ANIM_OFF);
-                lv_bar_set_range(ui_DryBar, 0, time*60);
+                lv_bar_set_range(ui_DryBar, 0, dryTime*60);
                 lv_bar_set_value(ui_DryBar, 0, LV_ANIM_OFF);
                 lv_obj_add_flag(ui_JustBar, LV_OBJ_FLAG_HIDDEN);
                 lv_obj_clear_flag(ui_SpinBar, LV_OBJ_FLAG_HIDDEN);
@@ -549,6 +554,11 @@ void ui_event_PauseResume(lv_event_t * e)
     if(event_code == LV_EVENT_CLICKED) {
         lv_label_set_text(ui_pauseLabel, paused ? "Pause" : "Resume");
         paused = !paused;
+        if(paused) {
+            pauseTimer();
+        } else {
+            resumeTimer();
+        }
     }
 }
 
